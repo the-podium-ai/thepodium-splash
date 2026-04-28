@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background (red racing) -->
+  <rect width="64" height="64" rx="12" fill="#E8001D"/>
+
+  <!-- Checkered flag pattern - 4x4 grid centered -->
+  <g transform="translate(12, 12)">
+    <!-- Row 1: white, black, white, black -->
+    <rect x="0" y="0" width="10" height="10" fill="#ffffff"/>
+    <rect x="10" y="0" width="10" height="10" fill="#0a0a0a"/>
+    <rect x="20" y="0" width="10" height="10" fill="#ffffff"/>
+    <rect x="30" y="0" width="10" height="10" fill="#0a0a0a"/>
+
+    <!-- Row 2: black, white, black, white -->
+    <rect x="0" y="10" width="10" height="10" fill="#0a0a0a"/>
+    <rect x="10" y="10" width="10" height="10" fill="#ffffff"/>
+    <rect x="20" y="10" width="10" height="10" fill="#0a0a0a"/>
+    <rect x="30" y="10" width="10" height="10" fill="#ffffff"/>
+
+    <!-- Row 3: white, black, white, black -->
+    <rect x="0" y="20" width="10" height="10" fill="#ffffff"/>
+    <rect x="10" y="20" width="10" height="10" fill="#0a0a0a"/>
+    <rect x="20" y="20" width="10" height="10" fill="#ffffff"/>
+    <rect x="30" y="20" width="10" height="10" fill="#0a0a0a"/>
+
+    <!-- Row 4: black, white, black, white -->
+    <rect x="0" y="30" width="10" height="10" fill="#0a0a0a"/>
+    <rect x="10" y="30" width="10" height="10" fill="#ffffff"/>
+    <rect x="20" y="30" width="10" height="10" fill="#0a0a0a"/>
+    <rect x="30" y="30" width="10" height="10" fill="#ffffff"/>
+  </g>
+</svg>

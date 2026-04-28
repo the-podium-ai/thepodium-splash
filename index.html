@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="The Podium — Plataforma de IA para sim racing. Em breve.">
+  <meta name="description" content="The Podium — AI platform for sim racing. Coming soon.">
   <meta name="theme-color" content="#0a0a0a">
 
+  <title>The Podium.ai — Em breve</title>
+
+  <!-- Favicon (checkered flag) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.svg">
+
   <!-- Open Graph -->
-  <meta property="og:title" content="The Podium">
-  <meta property="og:description" content="Onde os pilotos vão para vencer.">
+  <meta property="og:title" content="The Podium.ai">
+  <meta property="og:description" content="Onde pilotos crescem e campeões nascem.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thepodium.ai">
+  <meta property="og:image" content="https://thepodium.ai/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Podium.ai — Onde pilotos crescem e campeões nascem.">
+  <meta property="og:locale" content="pt_BR">
 
-  <title>The Podium — Em breve</title>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Podium.ai">
+  <meta name="twitter:description" content="Onde pilotos crescem e campeões nascem.">
+  <meta name="twitter:image" content="https://thepodium.ai/og-image.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,13 +91,52 @@
       50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
     }
 
+    /* LANGUAGE TOGGLE */
+    .lang-toggle {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .lang-toggle button {
+      background: transparent;
+      border: none;
+      color: #777;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 100px;
+      transition: all 0.2s ease;
+    }
+
+    .lang-toggle button.active {
+      background: #E8001D;
+      color: #fff;
+    }
+
+    .lang-toggle button:hover:not(.active) {
+      color: #fff;
+    }
+
     main {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px 24px;
+      padding: 80px 24px 40px;
       position: relative;
       z-index: 1;
       text-align: center;
@@ -146,21 +200,50 @@
     .tagline {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 600;
-      font-size: clamp(18px, 3vw, 28px);
-      letter-spacing: 1px;
-      color: #ccc;
-      margin-bottom: 12px;
+      font-size: clamp(20px, 3.2vw, 32px);
+      letter-spacing: 0.5px;
+      color: #ddd;
+      margin-bottom: 24px;
       animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      line-height: 1.2;
     }
 
     .subtagline {
       font-size: 14px;
-      color: #777;
+      color: #888;
       font-weight: 300;
-      max-width: 480px;
-      line-height: 1.6;
-      margin-bottom: 56px;
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 24px;
       animation: fadeInUp 0.8s ease-out 0.3s backwards;
+    }
+
+    .philosophy {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      color: #aaa;
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .philosophy strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .closing-line {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      color: #E8001D;
+      text-transform: uppercase;
+      margin-bottom: 56px;
+      animation: fadeInUp 0.8s ease-out 0.5s backwards;
     }
 
     .divider {
@@ -168,13 +251,13 @@
       height: 2px;
       background: linear-gradient(90deg, transparent, #E8001D, transparent);
       margin: 0 auto 40px;
-      animation: fadeIn 0.8s ease-out 0.4s backwards;
+      animation: fadeIn 0.8s ease-out 0.6s backwards;
     }
 
     .form-container {
       width: 100%;
       max-width: 460px;
-      animation: fadeInUp 0.8s ease-out 0.5s backwards;
+      animation: fadeInUp 0.8s ease-out 0.7s backwards;
     }
 
     .form-label {
@@ -285,14 +368,6 @@
       z-index: 1;
     }
 
-    footer .copy { margin-bottom: 6px; }
-
-    footer .conf {
-      color: #333;
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -312,7 +387,10 @@
       .form { flex-direction: column; }
       .button { width: 100%; padding: 16px; }
       .badge { margin-bottom: 32px; }
-      .subtagline { margin-bottom: 40px; }
+      .closing-line { margin-bottom: 40px; }
+      .lang-toggle { top: 16px; right: 16px; }
+      main { padding-top: 70px; }
+      .philosophy { font-size: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -324,59 +402,159 @@
   </style>
 </head>
 <body>
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle" role="group" aria-label="Language toggle">
+    <button id="btn-pt" class="active" aria-label="Português">PT</button>
+    <button id="btn-en" aria-label="English">EN</button>
+  </div>
+
   <main>
-    <div class="badge">Em Breve · 2026</div>
+    <div class="badge"
+         data-pt="Em Breve · 2026"
+         data-en="Coming Soon · 2026">Em Breve · 2026</div>
 
     <h1 class="logo">
       THE P<span class="red-dot">O</span>DIUM<span class="ai-tag">.ai</span>
     </h1>
 
-    <p class="tagline">Onde os pilotos vão para vencer.</p>
+    <p class="tagline"
+       data-pt="Onde pilotos crescem e campeões nascem."
+       data-en="Where drivers grow and champions are born.">
+      Onde pilotos crescem e campeões nascem.
+    </p>
 
-    <p class="subtagline">
-      Plataforma de inteligência artificial para sim racing.
+    <p class="subtagline"
+       data-pt="Plataforma de inteligência artificial e coaches especializados para a jornada completa em sim racing: da escolha e configuração do hardware e software ao coaching orientado a dados que leva a vitórias."
+       data-en="AI platform and expert coaches for the complete sim racing journey: from hardware and software selection and setup to data-driven coaching that leads to victories.">
+      Plataforma de inteligência artificial e coaches especializados para a jornada completa em sim racing: da escolha e configuração do hardware e software ao coaching orientado a dados que leva a vitórias.
+    </p>
+
+    <p class="philosophy"
+       data-pt-html="<strong>Tecnologia que economiza meses.</strong> <strong>Humanos que economizam anos.</strong>"
+       data-en-html="<strong>Technology that saves months.</strong> <strong>Humans that save years.</strong>">
+      <strong>Tecnologia que economiza meses.</strong> <strong>Humanos que economizam anos.</strong>
+    </p>
+
+    <p class="closing-line"
+       data-pt="Treine como um pro. Pilote como um campeão."
+       data-en="Train like a pro. Race like a champion.">
       Treine como um pro. Pilote como um campeão.
     </p>
 
     <div class="divider"></div>
 
     <div class="form-container">
-      <span class="form-label">Acesso Antecipado</span>
+      <span class="form-label"
+            data-pt="Acesso Antecipado"
+            data-en="Early Access">Acesso Antecipado</span>
       <form class="form" id="signup-form" action="https://formspree.io/f/xzdylejr" method="POST">
         <input
           type="email"
           name="email"
           class="input"
+          data-pt-placeholder="seu@email.com"
+          data-en-placeholder="your@email.com"
           placeholder="seu@email.com"
           required
           aria-label="Email"
         >
-        <button type="submit" class="button" id="submit-btn">
+        <button type="submit" class="button" id="submit-btn"
+                data-pt="Entrar na Lista"
+                data-en="Join the List">
           Entrar na Lista
         </button>
       </form>
       <div class="form-message" id="form-message"></div>
 
-      <p class="contact-line">
+      <p class="contact-line"
+         data-pt-html='ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'
+         data-en-html='or write to <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'>
         ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>
       </p>
     </div>
   </main>
 
   <footer>
-    <div class="copy">© 2026 The Podium</div>
-    <div class="conf">Stealth mode · Confidential</div>
+    © 2026 The Podium AI
   </footer>
 
   <script>
+    // LANGUAGE SYSTEM
+    const LANG_KEY = 'thepodium_lang';
+    const btnPT = document.getElementById('btn-pt');
+    const btnEN = document.getElementById('btn-en');
+    const htmlRoot = document.getElementById('html-root');
+
+    function setLang(lang) {
+      btnPT.classList.toggle('active', lang === 'pt');
+      btnEN.classList.toggle('active', lang === 'en');
+      htmlRoot.setAttribute('lang', lang === 'pt' ? 'pt-BR' : 'en');
+
+      document.querySelectorAll('[data-pt]').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text) el.textContent = text;
+      });
+
+      document.querySelectorAll('[data-pt-html]').forEach(el => {
+        const html = el.getAttribute('data-' + lang + '-html');
+        if (html) el.innerHTML = html;
+      });
+
+      document.querySelectorAll('[data-pt-placeholder]').forEach(el => {
+        const placeholder = el.getAttribute('data-' + lang + '-placeholder');
+        if (placeholder) el.placeholder = placeholder;
+      });
+
+      document.title = lang === 'pt' ? 'The Podium.ai — Em breve' : 'The Podium.ai — Coming soon';
+
+      try {
+        localStorage.setItem(LANG_KEY, lang);
+      } catch(e) {}
+    }
+
+    btnPT.addEventListener('click', () => setLang('pt'));
+    btnEN.addEventListener('click', () => setLang('en'));
+
+    // Load saved preference (default = pt)
+    let savedLang = 'pt';
+    try {
+      const stored = localStorage.getItem(LANG_KEY);
+      if (stored === 'pt' || stored === 'en') savedLang = stored;
+    } catch(e) {}
+
+    if (savedLang !== 'pt') setLang(savedLang);
+
+    // FORM SUBMIT
     const form = document.getElementById('signup-form');
     const message = document.getElementById('form-message');
     const button = document.getElementById('submit-btn');
 
+    const messages = {
+      pt: {
+        sending: 'Enviando...',
+        success: '✓ Você está na lista. Em breve, novidades.',
+        error: 'Erro ao enviar. Tente novamente.',
+        button: 'Entrar na Lista'
+      },
+      en: {
+        sending: 'Sending...',
+        success: '✓ You are on the list. Stay tuned.',
+        error: 'Error sending. Please try again.',
+        button: 'Join the List'
+      }
+    };
+
+    function getCurrentLang() {
+      return btnEN.classList.contains('active') ? 'en' : 'pt';
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const lang = getCurrentLang();
+      const m = messages[lang];
+
       button.disabled = true;
-      button.textContent = 'Enviando...';
+      button.textContent = m.sending;
       message.className = 'form-message';
       message.textContent = '';
 
@@ -391,16 +569,16 @@
 
         if (response.ok) {
           message.className = 'form-message success';
-          message.textContent = '✓ Você está na lista. Em breve, novidades.';
+          message.textContent = m.success;
           form.reset();
-          button.textContent = 'Entrar na Lista';
+          button.textContent = m.button;
         } else {
-          throw new Error('Erro ao enviar');
+          throw new Error('Send error');
         }
       } catch (error) {
         message.className = 'form-message error';
-        message.textContent = 'Erro ao enviar. Tente novamente.';
-        button.textContent = 'Entrar na Lista';
+        message.textContent = m.error;
+        button.textContent = m.button;
       } finally {
         button.disabled = false;
       }
