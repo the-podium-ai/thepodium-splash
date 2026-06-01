@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="The Podium — AI platform for sim racing. Coming soon.">
+  <meta name="description" content="The Podium — a plataforma de desenvolvimento de piloto. Em breve.">
   <meta name="theme-color" content="#0a0a0a">
 
   <title>The Podium.ai — Em breve</title>
@@ -35,369 +35,151 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg:#0a0a0a; --red:#E8001D; --red-bright:#ff0020;
+      --text:#f5f5f5; --muted:#888; --dim:#555; --line:rgba(255,255,255,0.1);
+      --disp:'Barlow Condensed', sans-serif;
+      --body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow-x: hidden;
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html, body{ height:100%; width:100%; overflow-x:hidden; }
+    body{
+      font-family:var(--body); background:var(--bg); color:var(--text);
+      min-height:100vh; display:flex; flex-direction:column; position:relative;
     }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0a0a0a;
-      color: #f5f5f5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    body::before{
+      content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
       background-image:
-        linear-gradient(rgba(232, 0, 29, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(232, 0, 29, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none;
-      z-index: 0;
+        linear-gradient(rgba(232,0,29,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,0,29,0.03) 1px, transparent 1px);
+      background-size:50px 50px;
     }
-
-    body::after {
-      content: '';
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(232, 0, 29, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      animation: pulse 6s ease-in-out infinite;
+    body::after{
+      content:''; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:800px; height:800px; max-width:120vw; z-index:0; pointer-events:none;
+      background:radial-gradient(circle, rgba(232,0,29,0.08) 0%, transparent 70%);
+      animation:pulse 6s ease-in-out infinite;
     }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+    @keyframes pulse{
+      0%,100%{ opacity:.5; transform:translate(-50%,-50%) scale(1); }
+      50%{ opacity:1; transform:translate(-50%,-50%) scale(1.1); }
     }
 
     /* LANGUAGE TOGGLE */
-    .lang-toggle {
-      position: fixed;
-      top: 24px;
-      right: 24px;
-      z-index: 100;
-      display: flex;
-      gap: 4px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 100px;
-      padding: 4px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+    .lang-toggle{
+      position:fixed; top:24px; right:24px; z-index:100; display:flex; gap:4px;
+      background:rgba(255,255,255,0.04); border:1px solid var(--line);
+      border-radius:100px; padding:4px;
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    }
+    .lang-toggle button{
+      background:transparent; border:none; color:#777; font-family:var(--disp);
+      font-weight:700; font-size:12px; letter-spacing:1.5px; padding:6px 12px;
+      cursor:pointer; border-radius:100px; transition:all .2s ease;
+    }
+    .lang-toggle button.active{ background:var(--red); color:#fff; }
+    .lang-toggle button:hover:not(.active){ color:#fff; }
+
+    main{
+      flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      padding:80px 24px 40px; position:relative; z-index:1; text-align:center;
+      max-width:720px; margin:0 auto; width:100%;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 14px;
+      background:rgba(232,0,29,0.1); border:1px solid rgba(232,0,29,0.3);
+      border-radius:100px; font-size:11px; font-weight:600; letter-spacing:2px;
+      text-transform:uppercase; color:var(--red); margin-bottom:40px;
+      animation:fadeInDown .8s ease-out;
+    }
+    .badge::before{
+      content:''; width:6px; height:6px; background:var(--red); border-radius:50%;
+      animation:blink 2s ease-in-out infinite;
+    }
+    @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+    .logo{
+      font-family:var(--disp); font-weight:900; font-size:clamp(48px,12vw,120px);
+      letter-spacing:-2px; line-height:.9; margin-bottom:24px;
+      animation:fadeInUp .8s ease-out .1s backwards;
+    }
+    .logo .red-dot{ color:var(--red); }
+    .logo .ai-tag{
+      color:var(--red); font-style:italic; font-size:.5em; vertical-align:super;
+      letter-spacing:-1px; margin-left:4px;
+    }
+    .tagline{
+      font-family:var(--disp); font-weight:600; font-size:clamp(20px,3.2vw,32px);
+      letter-spacing:.5px; color:#ddd; margin-bottom:24px; line-height:1.2;
+      animation:fadeInUp .8s ease-out .2s backwards;
+    }
+    .subtagline{
+      font-size:14px; color:var(--muted); font-weight:300; max-width:560px;
+      line-height:1.7; margin-bottom:30px;
+      animation:fadeInUp .8s ease-out .3s backwards;
+    }
+    .closing-line{
+      font-family:var(--disp); font-weight:600; font-size:16px; letter-spacing:1.5px;
+      color:var(--red); text-transform:uppercase; margin-bottom:52px;
+      animation:fadeInUp .8s ease-out .4s backwards;
+    }
+    .divider{
+      width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--red), transparent);
+      margin:0 auto 40px; animation:fadeIn .8s ease-out .5s backwards;
     }
 
-    .lang-toggle button {
-      background: transparent;
-      border: none;
-      color: #777;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      padding: 6px 12px;
-      cursor: pointer;
-      border-radius: 100px;
-      transition: all 0.2s ease;
+    .form-container{ width:100%; max-width:460px; animation:fadeInUp .8s ease-out .6s backwards; }
+    .form-label{
+      font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:14px; display:block;
+    }
+    .form{ display:flex; gap:8px; width:100%; }
+    .input{
+      flex:1; padding:14px 18px; background:rgba(255,255,255,0.04);
+      border:1px solid var(--line); border-radius:8px; color:#fff;
+      font-family:var(--body); font-size:14px; font-weight:400; outline:none;
+      transition:all .2s ease;
+    }
+    .input::placeholder{ color:var(--dim); }
+    .input:focus{ border-color:var(--red); background:rgba(255,255,255,0.06); }
+    .button{
+      padding:14px 24px; background:var(--red); border:none; border-radius:8px;
+      color:#fff; font-family:var(--disp); font-size:14px; font-weight:700;
+      letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;
+      transition:all .2s ease; white-space:nowrap;
+    }
+    .button:hover{ background:var(--red-bright); transform:translateY(-1px); box-shadow:0 8px 24px rgba(232,0,29,0.3); }
+    .button:active{ transform:translateY(0); }
+    .button:disabled{ opacity:.6; cursor:not-allowed; }
+    .form-message{ margin-top:16px; font-size:13px; min-height:20px; transition:all .3s ease; }
+    .form-message.success{ color:#4ade80; }
+    .form-message.error{ color:#f87171; }
+    .contact-line{ margin-top:28px; font-size:12px; color:var(--dim); letter-spacing:.5px; }
+    .contact-line a{
+      color:var(--muted); text-decoration:none; border-bottom:1px dotted #444;
+      transition:all .2s ease; padding-bottom:1px;
+    }
+    .contact-line a:hover{ color:var(--red); border-bottom-color:var(--red); }
+
+    footer{
+      padding:32px 24px; text-align:center; font-size:11px; letter-spacing:1.5px;
+      color:var(--dim); text-transform:uppercase; font-weight:500; position:relative; z-index:1;
     }
 
-    .lang-toggle button.active {
-      background: #E8001D;
-      color: #fff;
+    @keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
+    @keyframes fadeInUp{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fadeInDown{ from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
+
+    @media (max-width:600px){
+      .form{ flex-direction:column; }
+      .button{ width:100%; padding:16px; }
+      .badge{ margin-bottom:32px; }
+      .closing-line{ margin-bottom:40px; }
+      .lang-toggle{ top:16px; right:16px; }
+      main{ padding-top:70px; }
     }
-
-    .lang-toggle button:hover:not(.active) {
-      color: #fff;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 80px 24px 40px;
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      background: rgba(232, 0, 29, 0.1);
-      border: 1px solid rgba(232, 0, 29, 0.3);
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #E8001D;
-      margin-bottom: 40px;
-      animation: fadeInDown 0.8s ease-out;
-    }
-
-    .badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #E8001D;
-      border-radius: 50%;
-      animation: blink 2s ease-in-out infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: clamp(48px, 12vw, 120px);
-      letter-spacing: -2px;
-      line-height: 0.9;
-      margin-bottom: 24px;
-      animation: fadeInUp 0.8s ease-out 0.1s backwards;
-    }
-
-    .logo .red-dot { color: #E8001D; }
-
-    .logo .ai-tag {
-      color: #E8001D;
-      font-style: italic;
-      font-size: 0.5em;
-      vertical-align: super;
-      letter-spacing: -1px;
-      margin-left: 4px;
-    }
-
-    .tagline {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: clamp(20px, 3.2vw, 32px);
-      letter-spacing: 0.5px;
-      color: #ddd;
-      margin-bottom: 24px;
-      animation: fadeInUp 0.8s ease-out 0.2s backwards;
-      line-height: 1.2;
-    }
-
-    .subtagline {
-      font-size: 14px;
-      color: #888;
-      font-weight: 300;
-      max-width: 580px;
-      line-height: 1.7;
-      margin-bottom: 24px;
-      animation: fadeInUp 0.8s ease-out 0.3s backwards;
-    }
-
-    .philosophy {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-      color: #aaa;
-      max-width: 540px;
-      line-height: 1.6;
-      margin-bottom: 32px;
-      animation: fadeInUp 0.8s ease-out 0.4s backwards;
-    }
-
-    .philosophy strong {
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .closing-line {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: 1.5px;
-      color: #E8001D;
-      text-transform: uppercase;
-      margin-bottom: 56px;
-      animation: fadeInUp 0.8s ease-out 0.5s backwards;
-    }
-
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #E8001D, transparent);
-      margin: 0 auto 40px;
-      animation: fadeIn 0.8s ease-out 0.6s backwards;
-    }
-
-    .form-container {
-      width: 100%;
-      max-width: 460px;
-      animation: fadeInUp 0.8s ease-out 0.7s backwards;
-    }
-
-    .form-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: #888;
-      margin-bottom: 14px;
-      display: block;
-    }
-
-    .form {
-      display: flex;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .input {
-      flex: 1;
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-
-    .input::placeholder { color: #555; }
-
-    .input:focus {
-      border-color: #E8001D;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .button {
-      padding: 14px 24px;
-      background: #E8001D;
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .button:hover {
-      background: #ff0020;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(232, 0, 29, 0.3);
-    }
-
-    .button:active { transform: translateY(0); }
-
-    .button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .form-message {
-      margin-top: 16px;
-      font-size: 13px;
-      min-height: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .form-message.success { color: #4ade80; }
-    .form-message.error { color: #f87171; }
-
-    .contact-line {
-      margin-top: 28px;
-      font-size: 12px;
-      color: #555;
-      letter-spacing: 0.5px;
-    }
-
-    .contact-line a {
-      color: #888;
-      text-decoration: none;
-      border-bottom: 1px dotted #444;
-      transition: all 0.2s ease;
-      padding-bottom: 1px;
-    }
-
-    .contact-line a:hover {
-      color: #E8001D;
-      border-bottom-color: #E8001D;
-    }
-
-    footer {
-      padding: 32px 24px;
-      text-align: center;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      color: #555;
-      text-transform: uppercase;
-      font-weight: 500;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      .form { flex-direction: column; }
-      .button { width: 100%; padding: 16px; }
-      .badge { margin-bottom: 32px; }
-      .closing-line { margin-bottom: 40px; }
-      .lang-toggle { top: 16px; right: 16px; }
-      main { padding-top: 70px; }
-      .philosophy { font-size: 14px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-      }
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; }
     }
   </style>
 </head>
@@ -424,21 +206,15 @@
     </p>
 
     <p class="subtagline"
-       data-pt="Plataforma de inteligência artificial e coaches especializados para a jornada completa em sim racing: do setup ao coaching que leva a vitórias."
-       data-en="AI platform and expert coaches for the complete sim racing journey: from setup to coaching that leads to victories.">
-      Plataforma de inteligência artificial e coaches especializados para a jornada completa em sim racing: do setup ao coaching que leva a vitórias.
-    </p>
-
-    <p class="philosophy"
-       data-pt-html="<strong>Tecnologia que economiza meses.</strong> <strong>Humanos que economizam anos.</strong>"
-       data-en-html="<strong>Technology that saves months.</strong> <strong>Humans that save years.</strong>">
-      <strong>Tecnologia que economiza meses.</strong> <strong>Humanos que economizam anos.</strong>
+       data-pt="A plataforma de desenvolvimento de piloto — do primeiro hardware ao pódio, no sim e na pista real."
+       data-en="The driver-development platform — from your first hardware to the podium, in the sim and on the real track.">
+      A plataforma de desenvolvimento de piloto — do primeiro hardware ao pódio, no sim e na pista real.
     </p>
 
     <p class="closing-line"
-       data-pt="Treine como um pro. Pilote como um campeão."
-       data-en="Train like a pro. Race like a champion.">
-      Treine como um pro. Pilote como um campeão.
+       data-pt="Treine com clareza. Pilote como um campeão."
+       data-en="Train with clarity. Race like a champion.">
+      Treine com clareza. Pilote como um campeão.
     </p>
 
     <div class="divider"></div>
@@ -449,20 +225,13 @@
             data-en="Early Access">Acesso Antecipado</span>
       <form class="form" id="signup-form" action="https://formspree.io/f/xzdylejr" method="POST">
         <input
-          type="email"
-          name="email"
-          class="input"
+          type="email" name="email" class="input"
           data-pt-placeholder="seu@email.com"
           data-en-placeholder="your@email.com"
-          placeholder="seu@email.com"
-          required
-          aria-label="Email"
-        >
+          placeholder="seu@email.com" required aria-label="Email">
         <button type="submit" class="button" id="submit-btn"
                 data-pt="Entrar na Lista"
-                data-en="Join the List">
-          Entrar na Lista
-        </button>
+                data-en="Join the List">Entrar na Lista</button>
       </form>
       <div class="form-message" id="form-message"></div>
 
@@ -474,9 +243,7 @@
     </div>
   </main>
 
-  <footer>
-    © 2026 The Podium AI
-  </footer>
+  <footer>© 2026 The Podium AI</footer>
 
   <script>
     // LANGUAGE SYSTEM
@@ -485,7 +252,7 @@
     const btnEN = document.getElementById('btn-en');
     const htmlRoot = document.getElementById('html-root');
 
-    function setLang(lang) {
+    function setLang(lang){
       btnPT.classList.toggle('active', lang === 'pt');
       btnEN.classList.toggle('active', lang === 'en');
       htmlRoot.setAttribute('lang', lang === 'pt' ? 'pt-BR' : 'en');
@@ -494,96 +261,55 @@
         const text = el.getAttribute('data-' + lang);
         if (text) el.textContent = text;
       });
-
       document.querySelectorAll('[data-pt-html]').forEach(el => {
         const html = el.getAttribute('data-' + lang + '-html');
         if (html) el.innerHTML = html;
       });
-
       document.querySelectorAll('[data-pt-placeholder]').forEach(el => {
-        const placeholder = el.getAttribute('data-' + lang + '-placeholder');
-        if (placeholder) el.placeholder = placeholder;
+        const ph = el.getAttribute('data-' + lang + '-placeholder');
+        if (ph) el.placeholder = ph;
       });
 
       document.title = lang === 'pt' ? 'The Podium.ai — Em breve' : 'The Podium.ai — Coming soon';
-
-      try {
-        localStorage.setItem(LANG_KEY, lang);
-      } catch(e) {}
+      try { localStorage.setItem(LANG_KEY, lang); } catch(e){}
     }
 
     btnPT.addEventListener('click', () => setLang('pt'));
     btnEN.addEventListener('click', () => setLang('en'));
 
-    // Load saved preference (default = pt)
     let savedLang = 'pt';
-    try {
-      const stored = localStorage.getItem(LANG_KEY);
-      if (stored === 'pt' || stored === 'en') savedLang = stored;
-    } catch(e) {}
-
+    try { const s = localStorage.getItem(LANG_KEY); if (s === 'pt' || s === 'en') savedLang = s; } catch(e){}
     if (savedLang !== 'pt') setLang(savedLang);
 
     // FORM SUBMIT
     const form = document.getElementById('signup-form');
     const message = document.getElementById('form-message');
     const button = document.getElementById('submit-btn');
-
     const messages = {
-      pt: {
-        sending: 'Enviando...',
-        success: '✓ Você está na lista. Em breve, novidades.',
-        error: 'Erro ao enviar. Tente novamente.',
-        button: 'Entrar na Lista'
-      },
-      en: {
-        sending: 'Sending...',
-        success: '✓ You are on the list. Stay tuned.',
-        error: 'Error sending. Please try again.',
-        button: 'Join the List'
-      }
+      pt: { sending:'Enviando...', success:'✓ Você está na lista. Em breve, novidades.', error:'Erro ao enviar. Tente novamente.', button:'Entrar na Lista' },
+      en: { sending:'Sending...', success:'✓ You are on the list. Stay tuned.', error:'Error sending. Please try again.', button:'Join the List' }
     };
-
-    function getCurrentLang() {
-      return btnEN.classList.contains('active') ? 'en' : 'pt';
-    }
+    function getCurrentLang(){ return btnEN.classList.contains('active') ? 'en' : 'pt'; }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const lang = getCurrentLang();
-      const m = messages[lang];
-
-      button.disabled = true;
-      button.textContent = m.sending;
-      message.className = 'form-message';
-      message.textContent = '';
-
+      const lang = getCurrentLang(); const m = messages[lang];
+      button.disabled = true; button.textContent = m.sending;
+      message.className = 'form-message'; message.textContent = '';
       const formData = new FormData(form);
-
       try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          message.className = 'form-message success';
-          message.textContent = m.success;
-          form.reset();
-          button.textContent = m.button;
-        } else {
-          throw new Error('Send error');
-        }
-      } catch (error) {
-        message.className = 'form-message error';
-        message.textContent = m.error;
+        const res = await fetch(form.action, { method:'POST', body:formData, headers:{ 'Accept':'application/json' } });
+        if (res.ok) {
+          message.className = 'form-message success'; message.textContent = m.success;
+          form.reset(); button.textContent = m.button;
+        } else { throw new Error('Send error'); }
+      } catch (err) {
+        message.className = 'form-message error'; message.textContent = m.error;
         button.textContent = m.button;
-      } finally {
-        button.disabled = false;
-      }
+      } finally { button.disabled = false; }
     });
   </script>
+
   <!-- Vercel Web Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
