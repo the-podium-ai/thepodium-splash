@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="The Podium — a plataforma de desenvolvimento de piloto. Em breve.">
+  <meta name="description" content="The Podium — a plataforma com IA que suporta e acelera a evolução do piloto. Em breve.">
   <meta name="theme-color" content="#0a0a0a">
 
   <title>The Podium.ai — Em breve</title>
@@ -206,9 +206,9 @@
     </p>
 
     <p class="subtagline"
-       data-pt="A plataforma de desenvolvimento de piloto — do primeiro hardware ao pódio, no sim e na pista real."
-       data-en="The driver-development platform — from your first hardware to the podium, in the sim and on the real track.">
-      A plataforma de desenvolvimento de piloto — do primeiro hardware ao pódio, no sim e na pista real.
+       data-pt="A plataforma com IA que suporta e acelera a evolução do piloto — do primeiro hardware ao pódio, no sim e na pista real."
+       data-en="The AI-powered platform that supports and accelerates the driver's evolution — from your first hardware to the podium, in the sim and on the real track.">
+      A plataforma com IA que suporta e acelera a evolução do piloto — do primeiro hardware ao pódio, no sim e na pista real.
     </p>
 
     <p class="closing-line"
@@ -243,7 +243,9 @@
     </div>
   </main>
 
-  <footer>© 2026 The Podium AI</footer>
+  <footer
+    data-pt="© 2026 The Podium AI LLC · Todos os direitos reservados"
+    data-en="© 2026 The Podium AI LLC · All rights reserved">© 2026 The Podium AI LLC · Todos os direitos reservados</footer>
 
   <script>
     // LANGUAGE SYSTEM
@@ -277,8 +279,12 @@
     btnPT.addEventListener('click', () => setLang('pt'));
     btnEN.addEventListener('click', () => setLang('en'));
 
-    let savedLang = 'pt';
+    let savedLang = null;
     try { const s = localStorage.getItem(LANG_KEY); if (s === 'pt' || s === 'en') savedLang = s; } catch(e){}
+    if (!savedLang) {
+      const nav = (navigator.language || 'pt').toLowerCase();
+      savedLang = nav.startsWith('pt') ? 'pt' : 'en';
+    }
     if (savedLang !== 'pt') setLang(savedLang);
 
     // FORM SUBMIT
