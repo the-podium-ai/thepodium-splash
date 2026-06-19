@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="The Podium — a plataforma com IA que suporta e acelera a evolução do piloto. Em breve.">
+  <meta name="description" content="The Podium — a plataforma com IA para pilotos de sim racing, do primeiro hardware ao pódio, no sim e na pista real.">
   <meta name="theme-color" content="#0a0a0a">
 
-  <title>The Podium.ai — Em breve</title>
+  <title>The Podium.ai — Onde pilotos evoluem e campeões nascem</title>
 
-  <!-- Favicon (checkered flag) -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" href="/favicon.svg">
 
@@ -38,14 +37,17 @@
     :root{
       --bg:#0a0a0a; --red:#E8001D; --red-bright:#ff0020;
       --text:#f5f5f5; --muted:#888; --dim:#555; --line:rgba(255,255,255,0.1);
+      --surface:rgba(255,255,255,0.03); --surface-2:rgba(255,255,255,0.05);
       --disp:'Barlow Condensed', sans-serif;
       --body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --maxw:1080px;
     }
     *{ margin:0; padding:0; box-sizing:border-box; }
-    html, body{ height:100%; width:100%; overflow-x:hidden; }
+    html{ scroll-behavior:smooth; }
+    html, body{ width:100%; overflow-x:hidden; }
     body{
       font-family:var(--body); background:var(--bg); color:var(--text);
-      min-height:100vh; display:flex; flex-direction:column; position:relative;
+      position:relative; -webkit-font-smoothing:antialiased; line-height:1.6;
     }
     body::before{
       content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
@@ -54,16 +56,9 @@
         linear-gradient(90deg, rgba(232,0,29,0.03) 1px, transparent 1px);
       background-size:50px 50px;
     }
-    body::after{
-      content:''; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:800px; height:800px; max-width:120vw; z-index:0; pointer-events:none;
-      background:radial-gradient(circle, rgba(232,0,29,0.08) 0%, transparent 70%);
-      animation:pulse 6s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{ opacity:.5; transform:translate(-50%,-50%) scale(1); }
-      50%{ opacity:1; transform:translate(-50%,-50%) scale(1.1); }
-    }
+    a{ color:inherit; text-decoration:none; }
+    ::selection{ background:var(--red); color:#fff; }
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
 
     /* LANGUAGE TOGGLE */
     .lang-toggle{
@@ -80,70 +75,25 @@
     .lang-toggle button.active{ background:var(--red); color:#fff; }
     .lang-toggle button:hover:not(.active){ color:#fff; }
 
-    main{
-      flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;
-      padding:80px 24px 40px; position:relative; z-index:1; text-align:center;
-      max-width:720px; margin:0 auto; width:100%;
+    /* shared type */
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:9px; font-family:var(--disp);
+      font-weight:700; font-size:13px; letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--red); margin-bottom:20px;
     }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 14px;
-      background:rgba(232,0,29,0.1); border:1px solid rgba(232,0,29,0.3);
-      border-radius:100px; font-size:11px; font-weight:600; letter-spacing:2px;
-      text-transform:uppercase; color:var(--red); margin-bottom:40px;
-      animation:fadeInDown .8s ease-out;
+    .eyebrow::before{ content:''; width:18px; height:2px; background:var(--red); }
+    .h2{
+      font-family:var(--disp); font-weight:800; text-transform:uppercase;
+      font-size:clamp(30px,5vw,56px); line-height:.98; letter-spacing:-1px; margin-bottom:18px;
     }
-    .badge::before{
-      content:''; width:6px; height:6px; background:var(--red); border-radius:50%;
-      animation:blink 2s ease-in-out infinite;
-    }
-    @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
+    .h2 .r{ color:var(--red); }
+    .sub{ color:var(--muted); max-width:600px; font-size:16px; font-weight:300; line-height:1.7; }
+    .sub b{ color:var(--text); font-weight:500; }
 
-    .logo{
-      font-family:var(--disp); font-weight:900; font-size:clamp(48px,12vw,120px);
-      letter-spacing:-2px; line-height:.9; margin-bottom:24px;
-      animation:fadeInUp .8s ease-out .1s backwards;
-    }
-    .logo .red-dot{ color:var(--red); }
-    .logo .ai-tag{
-      color:var(--red); font-style:italic; font-size:.5em; vertical-align:super;
-      letter-spacing:-1px; margin-left:4px;
-    }
-    .tagline{
-      font-family:var(--disp); font-weight:600; font-size:clamp(20px,3.2vw,32px);
-      letter-spacing:.5px; color:#ddd; margin-bottom:24px; line-height:1.2;
-      animation:fadeInUp .8s ease-out .2s backwards;
-    }
-    .subtagline{
-      font-size:14px; color:var(--muted); font-weight:300; max-width:560px;
-      line-height:1.7; margin-bottom:30px;
-      animation:fadeInUp .8s ease-out .3s backwards;
-    }
-    .closing-line{
-      font-family:var(--disp); font-weight:600; font-size:16px; letter-spacing:1.5px;
-      color:var(--red); text-transform:uppercase; margin-bottom:52px;
-      animation:fadeInUp .8s ease-out .4s backwards;
-    }
-    .divider{
-      width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--red), transparent);
-      margin:0 auto 40px; animation:fadeIn .8s ease-out .5s backwards;
-    }
-
-    .form-container{ width:100%; max-width:460px; animation:fadeInUp .8s ease-out .6s backwards; }
-    .form-label{
-      font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
-      color:var(--muted); margin-bottom:14px; display:block;
-    }
-    .form{ display:flex; gap:8px; width:100%; }
-    .input{
-      flex:1; padding:14px 18px; background:rgba(255,255,255,0.04);
-      border:1px solid var(--line); border-radius:8px; color:#fff;
-      font-family:var(--body); font-size:14px; font-weight:400; outline:none;
-      transition:all .2s ease;
-    }
-    .input::placeholder{ color:var(--dim); }
-    .input:focus{ border-color:var(--red); background:rgba(255,255,255,0.06); }
+    /* BUTTONS */
     .button{
-      padding:14px 24px; background:var(--red); border:none; border-radius:8px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 26px; background:var(--red); border:none; border-radius:8px;
       color:#fff; font-family:var(--disp); font-size:14px; font-weight:700;
       letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;
       transition:all .2s ease; white-space:nowrap;
@@ -151,98 +101,262 @@
     .button:hover{ background:var(--red-bright); transform:translateY(-1px); box-shadow:0 8px 24px rgba(232,0,29,0.3); }
     .button:active{ transform:translateY(0); }
     .button:disabled{ opacity:.6; cursor:not-allowed; }
-    .form-message{ margin-top:16px; font-size:13px; min-height:20px; transition:all .3s ease; }
+    .button-ghost{ background:transparent; border:1px solid var(--line); color:var(--text); }
+    .button-ghost:hover{ background:rgba(255,255,255,0.04); border-color:var(--red); box-shadow:none; transform:translateY(-1px); }
+
+    .divider{ width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--red), transparent); margin:0 auto; }
+
+    /* HERO */
+    .hero{
+      position:relative; z-index:1; min-height:92vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:center; text-align:center;
+      padding:96px 24px 64px; max-width:780px; margin:0 auto;
+    }
+    .hero-glow{
+      position:absolute; top:42%; left:50%; transform:translate(-50%,-50%);
+      width:820px; height:820px; max-width:130vw; z-index:-1; pointer-events:none;
+      background:radial-gradient(circle, rgba(232,0,29,0.10) 0%, transparent 70%);
+      animation:pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ opacity:.55; transform:translate(-50%,-50%) scale(1); }
+      50%{ opacity:1; transform:translate(-50%,-50%) scale(1.1); }
+    }
+    .mark{ margin-bottom:26px; animation:fadeInDown .8s ease-out; }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 14px;
+      background:rgba(232,0,29,0.1); border:1px solid rgba(232,0,29,0.3);
+      border-radius:100px; font-family:var(--disp); font-size:12px; font-weight:700;
+      letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:34px;
+      animation:fadeInDown .8s ease-out .05s backwards;
+    }
+    .badge::before{ content:''; width:6px; height:6px; background:var(--red); border-radius:50%; animation:blink 2s ease-in-out infinite; }
+    @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+    .logo{
+      font-family:var(--disp); font-weight:900; font-size:clamp(48px,12vw,118px);
+      letter-spacing:-2px; line-height:.9; margin-bottom:22px;
+      animation:fadeInUp .8s ease-out .1s backwards;
+    }
+    .logo .red-dot{ color:var(--red); }
+    .logo .ai-tag{ color:var(--red); font-style:italic; font-size:.5em; vertical-align:super; letter-spacing:-1px; margin-left:4px; }
+
+    .tagline{
+      font-family:var(--disp); font-weight:600; font-size:clamp(20px,3.2vw,32px);
+      letter-spacing:.5px; color:#ddd; margin-bottom:20px; line-height:1.2;
+      animation:fadeInUp .8s ease-out .2s backwards;
+    }
+    .subtagline{
+      font-size:15px; color:var(--muted); font-weight:300; max-width:560px;
+      line-height:1.7; margin-bottom:26px;
+      animation:fadeInUp .8s ease-out .3s backwards;
+    }
+    .closing-line{
+      font-family:var(--disp); font-weight:600; font-size:16px; letter-spacing:1.5px;
+      color:var(--red); text-transform:uppercase; margin-bottom:38px;
+      animation:fadeInUp .8s ease-out .4s backwards;
+    }
+    .hero-cta{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; animation:fadeInUp .8s ease-out .55s backwards; }
+
+    /* SECTIONS */
+    .section{ position:relative; z-index:1; padding:84px 0; border-top:1px solid var(--line); }
+
+    /* THEMES */
+    .fgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:40px; }
+    .fcard{ background:#0c0c0c; padding:32px 28px 34px; transition:background .25s ease; }
+    .fcard:hover{ background:var(--surface); }
+    .fcard .ftag{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--red); display:block; margin-bottom:20px; }
+    .fcard h3{ font-family:var(--disp); font-weight:800; font-size:26px; letter-spacing:-.3px; margin-bottom:12px; text-transform:uppercase; }
+    .fcard p{ color:var(--muted); font-weight:300; font-size:15px; line-height:1.6; }
+
+    /* REAL */
+    .real{ text-align:center; }
+    .real .eyebrow{ display:inline-flex; }
+    .real .h2, .real .sub{ margin-left:auto; margin-right:auto; }
+
+    /* ABOUT */
+    .about p{ color:var(--muted); font-weight:300; font-size:17px; line-height:1.7; max-width:680px; margin-bottom:18px; }
+    .about p b{ color:var(--text); font-weight:500; }
+    .entity{ display:inline-flex; gap:10px; align-items:center; border:1px solid var(--line); border-radius:100px; padding:9px 18px; margin-top:10px; font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text); }
+    .entity .sep{ color:var(--red); }
+
+    /* CTA */
+    .cta{ text-align:center; }
+    .cta-inner{ max-width:520px; margin:0 auto; }
+    .cta .h2{ margin-bottom:14px; }
+    .cta .sub{ margin:0 auto 30px; }
+    .form-label{ font-family:var(--disp); font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:14px; display:block; }
+    .form{ display:flex; gap:8px; width:100%; max-width:460px; margin:0 auto; }
+    .input{
+      flex:1; min-width:0; padding:14px 18px; background:rgba(255,255,255,0.04);
+      border:1px solid var(--line); border-radius:8px; color:#fff;
+      font-family:var(--body); font-size:14px; outline:none; transition:all .2s ease;
+    }
+    .input::placeholder{ color:var(--dim); }
+    .input:focus{ border-color:var(--red); background:rgba(255,255,255,0.06); }
+    .form-message{ margin-top:16px; font-size:13px; min-height:20px; transition:all .3s ease; font-weight:400; }
     .form-message.success{ color:#4ade80; }
     .form-message.error{ color:#f87171; }
-    .contact-line{ margin-top:28px; font-size:12px; color:var(--dim); letter-spacing:.5px; }
-    .contact-line a{
-      color:var(--muted); text-decoration:none; border-bottom:1px dotted #444;
-      transition:all .2s ease; padding-bottom:1px;
-    }
+    .contact-line{ margin-top:26px; font-size:12px; color:var(--dim); letter-spacing:.5px; }
+    .contact-line a{ color:var(--muted); border-bottom:1px dotted #444; transition:all .2s ease; padding-bottom:1px; }
     .contact-line a:hover{ color:var(--red); border-bottom-color:var(--red); }
 
+    /* FOOTER */
     footer{
-      padding:32px 24px; text-align:center; font-size:11px; letter-spacing:1.5px;
-      color:var(--dim); text-transform:uppercase; font-weight:500; position:relative; z-index:1;
+      position:relative; z-index:1; padding:34px 24px; text-align:center; font-family:var(--disp);
+      font-size:11px; letter-spacing:1.5px; color:var(--dim); text-transform:uppercase; font-weight:600;
+      border-top:1px solid var(--line);
     }
 
+    /* animations */
     @keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
     @keyframes fadeInUp{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
     @keyframes fadeInDown{ from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
+    .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.in{ opacity:1; transform:none; }
 
+    :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:4px; }
+
+    @media (max-width:860px){ .fgrid{ grid-template-columns:1fr; } }
     @media (max-width:600px){
       .form{ flex-direction:column; }
       .button{ width:100%; padding:16px; }
-      .badge{ margin-bottom:32px; }
-      .closing-line{ margin-bottom:40px; }
+      .hero{ min-height:auto; padding:80px 22px 56px; }
+      .section{ padding:60px 0; }
       .lang-toggle{ top:16px; right:16px; }
-      main{ padding-top:70px; }
     }
     @media (prefers-reduced-motion: reduce){
-      *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+      *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition:none !important; scroll-behavior:auto; }
+      .reveal{ opacity:1; transform:none; }
     }
   </style>
 </head>
 <body>
+
   <!-- LANGUAGE TOGGLE -->
   <div class="lang-toggle" role="group" aria-label="Language toggle">
     <button id="btn-pt" class="active" aria-label="Português">PT</button>
     <button id="btn-en" aria-label="English">EN</button>
   </div>
 
-  <main>
-    <div class="badge"
-         data-pt="Em Breve · 2026"
-         data-en="Coming Soon · 2026">Em Breve · 2026</div>
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-glow" aria-hidden="true"></div>
 
-    <h1 class="logo">
-      THE P<span class="red-dot">O</span>DIUM<span class="ai-tag">.ai</span>
-    </h1>
+    <svg class="mark" width="38" height="46" viewBox="0 0 38 46" aria-hidden="true">
+      <rect x="11" y="4" width="11" height="42" rx="5.5" transform="rotate(7 16.5 25)" fill="#E8001D"/>
+      <rect x="26" y="3" width="9" height="22" rx="4.5" transform="rotate(7 30.5 14)" fill="#f5f5f5"/>
+    </svg>
+
+    <h1 class="logo">THE P<span class="red-dot">O</span>DIUM<span class="ai-tag">.ai</span></h1>
 
     <p class="tagline"
        data-pt="Onde pilotos evoluem e campeões nascem."
-       data-en="Where drivers evolve and champions are born.">
-      Onde pilotos evoluem e campeões nascem.
-    </p>
+       data-en="Where drivers evolve and champions are born.">Onde pilotos evoluem e campeões nascem.</p>
 
     <p class="subtagline"
-       data-pt="A plataforma com IA que suporta e acelera a evolução do piloto — do primeiro hardware ao pódio, no sim e na pista real."
-       data-en="The AI-powered platform that supports and accelerates the driver's evolution — from your first hardware to the podium, in the sim and on the real track.">
-      A plataforma com IA que suporta e acelera a evolução do piloto — do primeiro hardware ao pódio, no sim e na pista real.
-    </p>
+       data-pt="A plataforma com IA para pilotos de sim racing — do primeiro hardware ao pódio, no simulador e na pista real."
+       data-en="The AI-powered platform for sim racing drivers — from your first hardware to the podium, in the sim and on the real track.">A plataforma com IA para pilotos de sim racing — do primeiro hardware ao pódio, no simulador e na pista real.</p>
 
     <p class="closing-line"
        data-pt="Treine com clareza. Pilote como um campeão."
-       data-en="Train with clarity. Race like a champion.">
-      Treine com clareza. Pilote como um campeão.
-    </p>
+       data-en="Train with clarity. Race like a champion.">Treine com clareza. Pilote como um campeão.</p>
 
-    <div class="divider"></div>
+    <div class="divider" style="margin-bottom:38px"></div>
 
-    <div class="form-container">
-      <span class="form-label"
-            data-pt="Acesso Antecipado"
-            data-en="Early Access">Acesso Antecipado</span>
-      <form class="form" id="signup-form" action="https://formspree.io/f/xzdylejr" method="POST">
-        <input
-          type="email" name="email" class="input"
-          data-pt-placeholder="seu@email.com"
-          data-en-placeholder="your@email.com"
-          placeholder="seu@email.com" required aria-label="Email">
-        <button type="submit" class="button" id="submit-btn"
-                data-pt="Entrar na Lista"
-                data-en="Join the List">Entrar na Lista</button>
-      </form>
-      <div class="form-message" id="form-message"></div>
-
-      <p class="contact-line"
-         data-pt-html='ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'
-         data-en-html='or write to <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'>
-        ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>
-      </p>
+    <div class="hero-cta">
+      <a href="#lista" class="button" data-pt="Entrar na Lista" data-en="Join the List">Entrar na Lista</a>
+      <a href="#produto" class="button button-ghost" data-pt="Saiba mais" data-en="Learn more">Saiba mais</a>
     </div>
-  </main>
+  </header>
 
+  <!-- THEMES -->
+  <section class="section" id="produto">
+    <div class="wrap">
+      <span class="eyebrow reveal" data-pt="O que fazemos" data-en="What we do">O que fazemos</span>
+      <h2 class="h2 reveal" data-pt-html="Do setup ao <span class='r'>pódio</span>." data-en-html="From setup to the <span class='r'>podium</span>.">Do setup ao <span class="r">pódio</span>.</h2>
+      <p class="sub reveal" data-pt="IA em cada etapa da jornada do piloto, e gente de verdade quando importa." data-en="AI at every step of a driver's journey, and real people when it counts.">IA em cada etapa da jornada do piloto, e gente de verdade quando importa.</p>
+
+      <div class="fgrid reveal">
+        <div class="fcard">
+          <span class="ftag" data-pt="Hardware & Setup" data-en="Hardware & Setup">Hardware & Setup</span>
+          <h3 data-pt="Comece certo" data-en="Start right">Comece certo</h3>
+          <p data-pt="O hardware e a configuração certos desde o dia 1 — sem gastar meses e dinheiro no caminho errado." data-en="The right hardware and setup from day one — without losing months and money down the wrong path.">O hardware e a configuração certos desde o dia 1 — sem gastar meses e dinheiro no caminho errado.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Dados & IA" data-en="Data & AI">Dados & IA</span>
+          <h3 data-pt="Evolua com dados" data-en="Improve with data">Evolua com dados</h3>
+          <p data-pt="Entenda onde você perde tempo e treine com foco, com a tecnologia fazendo o trabalho pesado de análise." data-en="See where you lose time and train with focus, with the technology doing the heavy lifting of analysis.">Entenda onde você perde tempo e treine com foco, com a tecnologia fazendo o trabalho pesado de análise.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Coaching" data-en="Coaching">Coaching</span>
+          <h3 data-pt="Conte com gente de verdade" data-en="Real people, real coaching">Conte com gente de verdade</h3>
+          <p data-pt="Coaching de verdade quando a IA não basta — para quebrar o platô e correr no seu melhor nível." data-en="Real coaching for when the AI isn't enough — to break the plateau and race at your best.">Coaching de verdade quando a IA não basta — para quebrar o platô e correr no seu melhor nível.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL -->
+  <section class="section real">
+    <div class="wrap">
+      <span class="eyebrow reveal" data-pt="Do virtual ao real" data-en="From virtual to real">Do virtual ao real</span>
+      <h2 class="h2 reveal" data-pt-html="O simulador é só o <span class='r'>começo</span>." data-en-html="The sim is just the <span class='r'>start</span>.">O simulador é só o <span class="r">começo</span>.</h2>
+      <p class="sub reveal" data-pt="O conhecimento que você constrói no virtual, levado para track days e corrida amadora de verdade." data-en="The skill you build in the sim, carried into real track days and amateur racing.">O conhecimento que você constrói no virtual, levado para track days e corrida amadora de verdade.</p>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow reveal" data-pt="Quem está construindo" data-en="Who's building it">Quem está construindo</span>
+      <h2 class="h2 reveal" data-pt-html="Um time que já <span class='r'>construiu</span> e escalou tecnologia." data-en-html="A team that has already <span class='r'>built</span> and scaled technology.">Um time que já <span class="r">construiu</span> e escalou tecnologia.</h2>
+      <p class="sub reveal" data-pt="Estratégia, produto, engenharia e infraestrutura focados no sim racing." data-en="Strategy, product, engineering, and infrastructure focused on sim racing.">Estratégia, produto, engenharia e infraestrutura focados no sim racing.</p>
+
+      <div class="fgrid reveal">
+        <div class="fcard">
+          <span class="ftag" data-pt="Produto & Estratégia" data-en="Product & Strategy">Produto & Estratégia</span>
+          <p data-pt="15+ anos construindo produtos de tecnologia, 20+ investimentos em startups e background em cyber e IA. Piloto de sim racing e track day." data-en="15+ years building technology products, 20+ startup investments, and a background in cyber and AI. Sim racing and track day driver.">15+ anos construindo produtos de tecnologia, 20+ investimentos em startups e background em cyber e IA. Piloto de sim racing e track day.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Engenharia" data-en="Engineering">Engenharia</span>
+          <p data-pt="Engenharia de software dedicada à plataforma — do produto à camada de dados que sustenta a IA." data-en="Software engineering dedicated to the platform — from product to the data layer behind the AI.">Engenharia de software dedicada à plataforma — do produto à camada de dados que sustenta a IA.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Infraestrutura & DevOps" data-en="Infrastructure & DevOps">Infraestrutura & DevOps</span>
+          <p data-pt="17 anos em TI enterprise e prática AI-native em automação e orquestração." data-en="17 years in enterprise IT and AI-native practice in automation and orchestration.">17 anos em TI enterprise e prática AI-native em automação e orquestração.</p>
+        </div>
+      </div>
+
+      <span class="entity" style="margin-top:32px">The Podium AI LLC <span class="sep">·</span> <span data-pt="Flórida, EUA" data-en="Florida, USA">Flórida, EUA</span></span>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="section cta" id="lista">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <h2 class="h2" data-pt-html="Entre na lista de <span class='r'>acesso antecipado</span>." data-en-html="Get on the <span class='r'>early-access</span> list.">Entre na lista de <span class="r">acesso antecipado</span>.</h2>
+        <p class="sub" data-pt="Seja avisado quando abrirmos. Estamos construindo agora, em 2026." data-en="We'll let you know when we open. We're building right now, in 2026.">Seja avisado quando abrirmos. Estamos construindo agora, em 2026.</p>
+
+        <span class="form-label" data-pt="Acesso Antecipado" data-en="Early Access">Acesso Antecipado</span>
+        <form class="form" id="signup-form" action="https://formspree.io/f/xzdylejr" method="POST">
+          <input type="email" name="email" class="input"
+                 data-pt-placeholder="seu@email.com" data-en-placeholder="your@email.com"
+                 placeholder="seu@email.com" required aria-label="Email">
+          <button type="submit" class="button" id="submit-btn"
+                  data-pt="Entrar na Lista" data-en="Join the List">Entrar na Lista</button>
+        </form>
+        <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
+
+        <p class="contact-line"
+           data-pt-html='ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'
+           data-en-html='or write to <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'>ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer
     data-pt="© 2026 The Podium AI LLC · Todos os direitos reservados"
     data-en="© 2026 The Podium AI LLC · All rights reserved">© 2026 The Podium AI LLC · Todos os direitos reservados</footer>
@@ -272,7 +386,9 @@
         if (ph) el.placeholder = ph;
       });
 
-      document.title = lang === 'pt' ? 'The Podium.ai — Em breve' : 'The Podium.ai — Coming soon';
+      document.title = lang === 'pt'
+        ? 'The Podium.ai — Onde pilotos evoluem e campeões nascem'
+        : 'The Podium.ai — Where drivers evolve and champions are born';
       try { localStorage.setItem(LANG_KEY, lang); } catch(e){}
     }
 
@@ -287,7 +403,7 @@
     }
     if (savedLang !== 'pt') setLang(savedLang);
 
-    // FORM SUBMIT
+    // FORM SUBMIT — Formspree
     const form = document.getElementById('signup-form');
     const message = document.getElementById('form-message');
     const button = document.getElementById('submit-btn');
@@ -314,6 +430,16 @@
         button.textContent = m.button;
       } finally { button.disabled = false; }
     });
+
+    // reveal on scroll
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((es) => {
+        es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold:.14 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
   </script>
 
   <!-- Vercel Web Analytics -->
