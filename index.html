@@ -163,6 +163,10 @@
 
     /* THEMES */
     .fgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:40px; }
+    .fgrid-5{ grid-template-columns:repeat(6,1fr); }
+    .fgrid-5 .fcard:nth-child(-n+3){ grid-column:span 2; }
+    .fgrid-5 .fcard:nth-child(n+4){ grid-column:span 3; }
+    .fgrid-2{ grid-template-columns:repeat(2,1fr); }
     .fcard{ background:#0c0c0c; padding:32px 28px 34px; transition:background .25s ease; }
     .fcard:hover{ background:var(--surface); }
     .fcard .ftag{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--red); display:block; margin-bottom:20px; }
@@ -217,7 +221,7 @@
 
     :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:4px; }
 
-    @media (max-width:860px){ .fgrid{ grid-template-columns:1fr; } }
+    @media (max-width:860px){ .fgrid, .fgrid-5, .fgrid-2{ grid-template-columns:1fr; } .fgrid-5 .fcard:nth-child(-n+3), .fgrid-5 .fcard:nth-child(n+4){ grid-column:auto; } }
     @media (max-width:600px){
       .form{ flex-direction:column; }
       .button{ width:100%; padding:16px; }
@@ -302,7 +306,7 @@
     <div class="wrap">
       <span class="eyebrow reveal" data-pt="Do virtual ao real" data-en="From virtual to real">Do virtual ao real</span>
       <h2 class="h2 reveal" data-pt-html="O simulador é só o <span class='r'>começo</span>." data-en-html="The sim is just the <span class='r'>start</span>.">O simulador é só o <span class="r">começo</span>.</h2>
-      <p class="sub reveal" data-pt="O conhecimento que você constrói no virtual, levado para track days e corrida amadora de verdade." data-en="The skill you build in the sim, carried into real track days and amateur racing.">O conhecimento que você constrói no virtual, levado para track days e corrida amadora de verdade.</p>
+      <p class="sub reveal" data-pt="A técnica, a consistência e o racecraft que você constrói no sim são a mesma base que já levou pilotos do servidor para a pista de verdade." data-en="The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to the real track.">A técnica, a consistência e o racecraft que você constrói no sim são a mesma base que já levou pilotos do servidor para a pista de verdade.</p>
     </div>
   </section>
 
@@ -313,10 +317,14 @@
       <h2 class="h2 reveal" data-pt-html="Um time que já <span class='r'>construiu</span> e escalou tecnologia." data-en-html="A team that has already <span class='r'>built</span> and scaled technology.">Um time que já <span class="r">construiu</span> e escalou tecnologia.</h2>
       <p class="sub reveal" data-pt="Estratégia, produto, engenharia e infraestrutura focados no sim racing." data-en="Strategy, product, engineering, and infrastructure focused on sim racing.">Estratégia, produto, engenharia e infraestrutura focados no sim racing.</p>
 
-      <div class="fgrid reveal">
+      <div class="fgrid fgrid-5 reveal">
         <div class="fcard">
           <span class="ftag" data-pt="Produto & Estratégia" data-en="Product & Strategy">Produto & Estratégia</span>
           <p data-pt="15+ anos construindo produtos de tecnologia, 20+ investimentos em startups e background em cyber e IA. Piloto de sim racing e track day." data-en="15+ years building technology products, 20+ startup investments, and a background in cyber and AI. Sim racing and track day driver.">15+ anos construindo produtos de tecnologia, 20+ investimentos em startups e background em cyber e IA. Piloto de sim racing e track day.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Tecnologia & Arquitetura" data-en="Technology & Architecture">Tecnologia & Arquitetura</span>
+          <p data-pt="Lidera a arquitetura técnica e a direção de engenharia da plataforma. Piloto de sim racing." data-en="Leads the platform's technical architecture and engineering direction. Sim racing driver.">Lidera a arquitetura técnica e a direção de engenharia da plataforma. Piloto de sim racing.</p>
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="Engenharia" data-en="Engineering">Engenharia</span>
@@ -325,6 +333,24 @@
         <div class="fcard">
           <span class="ftag" data-pt="Infraestrutura & DevOps" data-en="Infrastructure & DevOps">Infraestrutura & DevOps</span>
           <p data-pt="17 anos em TI enterprise e prática AI-native em automação e orquestração." data-en="17 years in enterprise IT and AI-native practice in automation and orchestration.">17 anos em TI enterprise e prática AI-native em automação e orquestração.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="GTM & Governança de IA" data-en="GTM & AI Governance">GTM & Governança de IA</span>
+          <p data-pt="20+ anos liderando cybersecurity, privacidade e governança de IA em organizações globais. Go-to-market, operações e confiança digital." data-en="20+ years leading cybersecurity, privacy, and AI governance at global organizations. Go-to-market, operations, and digital trust.">20+ anos liderando cybersecurity, privacidade e governança de IA em organizações globais. Go-to-market, operações e confiança digital.</p>
+        </div>
+      </div>
+
+      <span class="eyebrow reveal" style="margin-top:64px" data-pt="Conselho" data-en="Board">Conselho</span>
+      <p class="sub reveal" data-pt="Líderes globais do automobilismo, do esports e do sim racing." data-en="Global leaders from motorsport, esports, and sim racing.">Líderes globais do automobilismo, do esports e do sim racing.</p>
+
+      <div class="fgrid fgrid-2 reveal">
+        <div class="fcard">
+          <span class="ftag" data-pt="Pilotos & Mentores" data-en="Drivers & Mentors">Pilotos & Mentores</span>
+          <p data-pt="Pilotos e mentores profissionais — no sim e no real — com atuação global e 15+ anos de experiência." data-en="Professional drivers and mentors — in the sim and on the real track — with a global footprint and 15+ years of experience.">Pilotos e mentores profissionais — no sim e no real — com atuação global e 15+ anos de experiência.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Gestão de eSports & Sim Racing" data-en="eSports & Sim Racing Leadership">Gestão de eSports & Sim Racing</span>
+          <p data-pt="Gestores de organizações globais de eSports e sim racing." data-en="Managers of leading global eSports and sim racing organizations.">Gestores de organizações globais de eSports e sim racing.</p>
         </div>
       </div>
 
