@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR" id="html-root">
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="The Podium — a plataforma para pilotos de sim racing, do primeiro hardware ao pódio, no sim e na pista real.">
+  <meta name="description" content="The Podium — the AI-powered platform for sim racing drivers: driver assessment, training plan, human coaching and the right setup, from your first hardware to the podium.">
   <meta name="theme-color" content="#0a0a0a">
 
-  <title>The Podium — Onde pilotos evoluem e campeões nascem</title>
+  <title>The Podium — Where drivers evolve and champions are born</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" href="/favicon.svg">
@@ -21,13 +21,18 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Podium — Onde pilotos evoluem e campeões nascem.">
-  <meta property="og:locale" content="pt_BR">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="pt_BR">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Podium">
   <meta name="twitter:description" content="Onde pilotos evoluem e campeões nascem.">
   <meta name="twitter:image" content="https://thepodium.ai/og-image.png">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"The Podium AI","legalName":"The Podium AI LLC","url":"https://thepodium.ai","email":"hello@thepodium.ai","foundingDate":"2026","address":{"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US"},"description":"AI-powered driver development platform for sim racing: driver assessment, training plan, human coaching and hardware guidance, from the first rig to the podium."}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -166,6 +171,11 @@
     .fgrid-5 .fcard:nth-child(-n+3){ grid-column:span 2; }
     .fgrid-5 .fcard:nth-child(n+4){ grid-column:span 3; }
     .fgrid-2{ grid-template-columns:repeat(2,1fr); }
+    .fgrid-4{ grid-template-columns:repeat(4,1fr); }
+    .fgrid-team{ grid-template-columns:repeat(6,1fr); }
+    .fgrid-team .fcard{ grid-column:span 2; }
+    .fgrid-team .fcard:last-child:nth-child(3n+1){ grid-column:span 6; }
+    .fgrid-team .fcard:nth-last-child(2):nth-child(3n+1), .fgrid-team .fcard:last-child:nth-child(3n+2){ grid-column:span 3; }
     .fcard{ background:#0c0c0c; padding:32px 28px 34px; transition:background .25s ease; }
     .fcard:hover{ background:var(--surface); }
     .fcard .ftag{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--red); display:block; margin-bottom:20px; }
@@ -210,6 +220,9 @@
       font-size:11px; letter-spacing:1.5px; color:var(--dim); text-transform:uppercase; font-weight:600;
       border-top:1px solid var(--line);
     }
+    footer a{ color:var(--muted); border-bottom:1px dotted #444; }
+    footer a:hover{ color:var(--red); border-bottom-color:var(--red); }
+    .section-note{ color:var(--dim); font-size:13px; margin-top:22px; max-width:680px; }
 
     /* animations */
     @keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
@@ -220,7 +233,8 @@
 
     :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:4px; }
 
-    @media (max-width:860px){ .fgrid, .fgrid-5, .fgrid-2{ grid-template-columns:1fr; } .fgrid-5 .fcard:nth-child(-n+3), .fgrid-5 .fcard:nth-child(n+4){ grid-column:auto; } }
+    @media (max-width:1000px){ .fgrid-4{ grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:860px){ .fgrid, .fgrid-5, .fgrid-2, .fgrid-4, .fgrid-team{ grid-template-columns:1fr; } .fgrid-5 .fcard:nth-child(-n+3), .fgrid-5 .fcard:nth-child(n+4), .fgrid-team .fcard, .fgrid-team .fcard:last-child:nth-child(3n+1), .fgrid-team .fcard:nth-last-child(2):nth-child(3n+1), .fgrid-team .fcard:last-child:nth-child(3n+2){ grid-column:auto; } }
     @media (max-width:600px){
       .form{ flex-direction:column; }
       .button{ width:100%; padding:16px; }
@@ -238,8 +252,8 @@
 
   <!-- LANGUAGE TOGGLE -->
   <div class="lang-toggle" role="group" aria-label="Language toggle">
-    <button id="btn-pt" class="active" aria-label="Português">PT</button>
-    <button id="btn-en" aria-label="English">EN</button>
+    <button id="btn-pt" aria-label="Português">PT</button>
+    <button id="btn-en" class="active" aria-label="English">EN</button>
   </div>
 
   <!-- HERO -->
@@ -255,57 +269,182 @@
 
     <p class="tagline"
        data-pt="Onde pilotos evoluem e campeões nascem."
-       data-en="Where drivers evolve and champions are born.">Onde pilotos evoluem e campeões nascem.</p>
+       data-en="Where drivers evolve and champions are born.">Where drivers evolve and champions are born.</p>
 
     <p class="subtagline"
-       data-pt="A plataforma para pilotos de sim racing — do primeiro hardware ao pódio, no simulador e na pista real."
-       data-en="The platform for sim racing drivers — from your first hardware to the podium, in the sim and on the real track.">A plataforma para pilotos de sim racing — do primeiro hardware ao pódio, no simulador e na pista real.</p>
+       data-pt="A plataforma com IA para pilotos de sim racing — do primeiro hardware ao pódio, no simulador e na pista real."
+       data-en="The AI-powered platform for sim racing drivers — from your first hardware to the podium, in the sim and on the real track.">The AI-powered platform for sim racing drivers — from your first hardware to the podium, in the sim and on the real track.</p>
 
     <p class="closing-line"
        data-pt="Treine com clareza. Pilote como um campeão."
-       data-en="Train with clarity. Race like a champion.">Treine com clareza. Pilote como um campeão.</p>
+       data-en="Train with clarity. Race like a champion.">Train with clarity. Race like a champion.</p>
 
     <div class="divider" style="margin-bottom:38px"></div>
 
     <div class="hero-cta">
-      <a href="#lista" class="button" data-pt="Entrar na Lista" data-en="Join the List">Entrar na Lista</a>
-      <a href="#produto" class="button button-ghost" data-pt="Saiba mais" data-en="Learn more">Saiba mais</a>
+      <a href="#lista" class="button" data-pt="Entrar na Lista" data-en="Join the List">Join the List</a>
+      <a href="#produto" class="button button-ghost" data-pt="Saiba mais" data-en="Learn more">Learn more</a>
     </div>
   </header>
 
   <!-- THEMES -->
   <section class="section" id="produto">
     <div class="wrap">
-      <span class="eyebrow reveal" data-pt="O que fazemos" data-en="What we do">O que fazemos</span>
-      <h2 class="h2 reveal" data-pt-html="Do setup ao <span class='r'>pódio</span>." data-en-html="From setup to the <span class='r'>podium</span>.">Do setup ao <span class="r">pódio</span>.</h2>
-      <p class="sub reveal" data-pt="Gente de verdade + IA em cada etapa da jornada do piloto" data-en="Real people + AI at every step of a driver's journey">Gente de verdade + IA em cada etapa da jornada do piloto</p>
+      <span class="eyebrow reveal" data-pt="O que fazemos" data-en="What we do">What we do</span>
+      <h2 class="h2 reveal" data-pt-html="Do setup ao <span class='r'>pódio</span>." data-en-html="From setup to the <span class='r'>podium</span>.">From setup to the <span class="r">podium</span>.</h2>
+      <p class="sub reveal" data-pt="Gente de verdade + IA em cada etapa da jornada do piloto" data-en="Real people + AI at every step of a driver's journey">Real people + AI at every step of a driver's journey</p>
 
-      <div class="fgrid reveal">
+      <div class="fgrid fgrid-4 reveal">
         <div class="fcard">
           <span class="ftag" data-pt="Hardware & Setup" data-en="Hardware & Setup">Hardware & Setup</span>
-          <h3 data-pt="Comece certo" data-en="Start right">Comece certo</h3>
-          <p data-pt="O hardware e a configuração certos desde o dia 1 — sem gastar meses e dinheiro no caminho errado." data-en="The right hardware and setup from day one — without losing months and money down the wrong path.">O hardware e a configuração certos desde o dia 1 — sem gastar meses e dinheiro no caminho errado.</p>
+          <h3 data-pt="Comece certo" data-en="Start right">Start right</h3>
+          <p data-pt="O hardware e a configuração certos desde o dia 1, com orientação assistida por IA — sem gastar meses e dinheiro no caminho errado." data-en="The right hardware and setup from day one, with AI-assisted guidance — without losing months and money down the wrong path.">The right hardware and setup from day one, with AI-assisted guidance — without losing months and money down the wrong path.</p>
         </div>
         <div class="fcard">
-          <span class="ftag" data-pt="Dados & IA" data-en="Data & AI">Dados & IA</span>
-          <h3 data-pt="Evolua com dados" data-en="Improve with data">Evolua com dados</h3>
-          <p data-pt="Entenda onde você perde tempo e treine com foco, com a tecnologia fazendo o trabalho pesado de análise." data-en="See where you lose time and train with focus, with the technology doing the heavy lifting of analysis.">Entenda onde você perde tempo e treine com foco, com a tecnologia fazendo o trabalho pesado de análise.</p>
+          <span class="ftag" data-pt="Diagnóstico" data-en="Assessment">Assessment</span>
+          <h3 data-pt="Saiba onde você está" data-en="Know where you stand">Know where you stand</h3>
+          <p data-pt="Conecte o seu simulador. O diagnóstico mostra o que você executa bem e onde está perdendo tempo." data-en="Connect your sim. The assessment shows what you do well and where you are losing time.">Connect your sim. The assessment shows what you do well and where you are losing time.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Treino" data-en="Training">Training</span>
+          <h3 data-pt="Evolua com dados" data-en="Improve with data">Improve with data</h3>
+          <p data-pt="A IA transforma as suas sessões em um plano de treino objetivo, com conteúdo feito por coaches." data-en="AI turns your sessions into an objective training plan, with content made by coaches.">AI turns your sessions into an objective training plan, with content made by coaches.</p>
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="Coaching" data-en="Coaching">Coaching</span>
-          <h3 data-pt="Conte com gente de verdade" data-en="Real people, real coaching">Conte com gente de verdade</h3>
-          <p data-pt="Coaches de verdade, com a IA no apoio — para quebrar o platô e correr no seu melhor nível." data-en="Real coaches, amplified by AI — to break the plateau and race at your best.">Coaches de verdade, com a IA no apoio — para quebrar o platô e correr no seu melhor nível.</p>
+          <h3 data-pt="Conte com gente de verdade" data-en="Real people, real coaching">Real people, real coaching</h3>
+          <p data-pt="Coaches de verdade, com a IA no apoio — sessões conectadas ao seu dado, para quebrar o platô e correr no seu melhor nível." data-en="Real coaches, amplified by AI — sessions connected to your data, to break the plateau and race at your best.">Real coaches, amplified by AI — sessions connected to your data, to break the plateau and race at your best.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- COMO FUNCIONA -->
+  <section class="section" id="tecnologia">
+    <div class="wrap">
+      <span class="eyebrow reveal" data-pt="Como funciona" data-en="How it works">How it works</span>
+      <h2 class="h2 reveal" data-pt-html="Dado do piloto, análise e <span class='r'>recomendação</span>." data-en-html="Driver data, analysis and <span class='r'>recommendation</span>.">Driver data, analysis and <span class="r">recommendation</span>.</h2>
+      <p class="sub reveal" data-pt="A tecnologia por trás da plataforma, em quatro camadas." data-en="The technology behind the platform, in four layers.">The technology behind the platform, in four layers.</p>
+
+      <div class="fgrid fgrid-2 reveal">
+        <div class="fcard">
+          <span class="ftag" data-pt="01 · Coleta" data-en="01 · Collection">01 · Collection</span>
+          <h3 data-pt="Telemetria com consentimento" data-en="Telemetry with consent">Telemetry with consent</h3>
+          <p data-pt="Um coletor próprio lê a telemetria das suas sessões no simulador, com o seu consentimento, e envia para a plataforma. Nada é coletado sem você saber." data-en="Our own collector reads the telemetry of your sim sessions, with your consent, and sends it to the platform. Nothing is collected without you knowing.">Our own collector reads the telemetry of your sim sessions, with your consent, and sends it to the platform. Nothing is collected without you knowing.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="02 · Dados" data-en="02 · Data">02 · Data</span>
+          <h3 data-pt="Evolução ao longo do tempo" data-en="Progress over time">Progress over time</h3>
+          <p data-pt="Cada sessão, pista e carro entra no seu histórico. É a evolução ao longo do tempo, e não uma volta isolada, que alimenta o diagnóstico e as recomendações." data-en="Every session, track and car goes into your history. Evolution over time, not a single lap, is what feeds the assessment and the recommendations.">Every session, track and car goes into your history. Evolution over time, not a single lap, is what feeds the assessment and the recommendations.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="03 · Análise" data-en="03 · Analysis">03 · Analysis</span>
+          <h3 data-pt="Análise e recomendação" data-en="Analysis and recommendation">Analysis and recommendation</h3>
+          <p data-pt="A análise objetiva das suas sessões mostra onde você perde tempo. A IA generativa traduz isso em linguagem de piloto e indica o próximo passo." data-en="Objective analysis of your sessions shows where you lose time. Generative AI translates it into driver language and points to the next step.">Objective analysis of your sessions shows where you lose time. Generative AI translates it into driver language and points to the next step.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="04 · Agentes e plataforma" data-en="04 · Agents and platform">04 · Agents and platform</span>
+          <h3 data-pt="IA que age na jornada" data-en="AI that acts along the journey">AI that acts along the journey</h3>
+          <p data-pt="Assistentes de IA acompanham o piloto ao longo da jornada, com limites claros sobre o que podem e não podem fazer. Plataforma web, cloud-native, com privacidade por design (LGPD, GDPR e CCPA)." data-en="AI assistants accompany the driver along the journey, with clear boundaries on what they can and cannot do. Web platform, cloud-native, privacy by design (LGPD, GDPR and CCPA).">AI assistants accompany the driver along the journey, with clear boundaries on what they can and cannot do. Web platform, cloud-native, privacy by design (LGPD, GDPR and CCPA).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELO -->
+  <section class="section" id="modelo">
+    <div class="wrap">
+      <span class="eyebrow reveal" data-pt="Modelo de negócio" data-en="Business model">Business model</span>
+      <h2 class="h2 reveal" data-pt-html="Assinatura, serviços e <span class='r'>ecossistema</span>." data-en-html="Subscription, services and <span class='r'>ecosystem</span>.">Subscription, services and <span class="r">ecosystem</span>.</h2>
+      <p class="sub reveal" data-pt="Três fontes de receita, construídas em volta do piloto." data-en="Three revenue streams, built around the driver.">Three revenue streams, built around the driver.</p>
+
+      <div class="fgrid reveal">
+        <div class="fcard">
+          <span class="ftag" data-pt="Assinatura" data-en="Subscription">Subscription</span>
+          <h3 data-pt="Planos por nível de piloto" data-en="Plans by driver level">Plans by driver level</h3>
+          <p data-pt="Planos de assinatura por nível de piloto, do iniciante ao competitivo, com diagnóstico, treino e coaching em diferentes profundidades." data-en="Subscription plans by driver level, from beginner to competitive, with assessment, training and coaching at different depths.">Subscription plans by driver level, from beginner to competitive, with assessment, training and coaching at different depths.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Marketplace" data-en="Marketplace">Marketplace</span>
+          <h3 data-pt="Coaching humano" data-en="Human coaching">Human coaching</h3>
+          <p data-pt="Sessões com coaches verificados, agendadas e pagas na plataforma." data-en="Sessions with vetted coaches, booked and paid on the platform.">Sessions with vetted coaches, booked and paid on the platform.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Ecossistema" data-en="Ecosystem">Ecosystem</span>
+          <h3 data-pt="Parceiros da cena" data-en="Scene partners">Scene partners</h3>
+          <p data-pt="Parcerias com marcas e organizações do automobilismo virtual que atendem o piloto ao longo da jornada." data-en="Partnerships with brands and organizations in virtual motorsport that serve the driver along the journey.">Partnerships with brands and organizations in virtual motorsport that serve the driver along the journey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONDE ESTAMOS -->
+  <section class="section" id="estagio">
+    <div class="wrap">
+      <span class="eyebrow reveal" data-pt="Onde estamos" data-en="Where we are">Where we are</span>
+      <h2 class="h2 reveal" data-pt-html="Construindo <span class='r'>agora</span>." data-en-html="Building <span class='r'>now</span>.">Building <span class="r">now</span>.</h2>
+      <p class="sub reveal" data-pt="MVP em desenvolvimento em 2026, beta fechado com pilotos convidados em seguida e lançamento público em 2027." data-en="MVP under development in 2026, a closed beta with invited drivers next, and public launch in 2027.">MVP under development in 2026, a closed beta with invited drivers next, and public launch in 2027.</p>
+
+  </section>
+
   <!-- REAL -->
   <section class="section real">
     <div class="wrap">
-      <span class="eyebrow reveal" data-pt="Do virtual ao real" data-en="From virtual to real">Do virtual ao real</span>
-      <h2 class="h2 reveal" data-pt-html="O simulador é só o <span class='r'>começo</span>." data-en-html="The sim is just the <span class='r'>start</span>.">O simulador é só o <span class="r">começo</span>.</h2>
-      <p class="sub reveal" data-pt="A técnica, a consistência e o racecraft que você constrói no sim são a mesma base que já levou pilotos do servidor para a pista de verdade." data-en="The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to the real track.">A técnica, a consistência e o racecraft que você constrói no sim são a mesma base que já levou pilotos do servidor para a pista de verdade.</p>
+      <span class="eyebrow reveal" data-pt="Do virtual ao real" data-en="From virtual to real">From virtual to real</span>
+      <h2 class="h2 reveal" data-pt-html="O simulador é só o <span class='r'>começo</span>." data-en-html="The sim is just the <span class='r'>start</span>.">The sim is just the <span class="r">start</span>.</h2>
+      <p class="sub reveal" data-pt="A técnica, a consistência e o racecraft que você constrói no sim são a mesma base que já levou pilotos do servidor para a pista de verdade." data-en="The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to the real track.">The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to the real track.</p>
+    </div>
+  </section>
+
+  <!-- TIME -->
+  <section class="section" id="time">
+    <div class="wrap">
+      <span class="eyebrow reveal" data-pt="Quem constrói" data-en="Who's building it">Who's building it</span>
+      <h2 class="h2 reveal" data-pt-html="Um time que já <span class='r'>construiu</span> e escalou tecnologia." data-en-html="A team that has already <span class='r'>built</span> and scaled technology.">A team that has already <span class="r">built</span> and scaled technology.</h2>
+      <p class="sub reveal" data-pt="Produto, engenharia, dados, segurança, automobilismo e marketing, distribuídos entre Brasil e EUA." data-en="Product, engineering, data, security, motorsport and marketing, spread across Brazil and the US.">Product, engineering, data, security, motorsport and marketing, spread across Brazil and the US.</p>
+
+      <div class="fgrid fgrid-team reveal">
+        <div class="fcard">
+          <span class="ftag" data-pt="Founder & CEO" data-en="Founder & CEO">Founder & CEO</span>
+          <p data-pt="Quase duas décadas em cibersegurança em empresas globais de pagamentos. Fundador serial, com mais de 20 investimentos-anjo e dois exits. Carreira em produto. Sim racer e piloto de track day." data-en="Nearly two decades in cybersecurity at global payments companies. Serial founder, with 20+ angel investments and two exits. Product career. Sim racer and track day driver.">Nearly two decades in cybersecurity at global payments companies. Serial founder, with 20+ angel investments and two exits. Product career. Sim racer and track day driver.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Head de Produto · Engenheiro" data-en="Head of Product · Engineer">Head of Product · Engineer</span>
+          <p data-pt="Lidera produto e engenharia do MVP e escreveu a metodologia de desenvolvimento do piloto da plataforma. Já construiu análise de telemetria de pista. Sim racer." data-en="Leads product and engineering of the MVP and wrote the platform's driver development methodology. Has built track telemetry analysis before. Sim racer.">Leads product and engineering of the MVP and wrote the platform's driver development methodology. Has built track telemetry analysis before. Sim racer.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Founding Engineer" data-en="Founding Engineer">Founding Engineer</span>
+          <p data-pt="Engenheiro full-stack AI-native. Já levou um produto de IA do zero ao deploy sozinho. Constrói os agentes, o app e a camada de dados." data-en="AI-native full-stack engineer. Has taken an AI product from zero to deployment single-handedly. Builds the agents, the app and the data layer.">AI-native full-stack engineer. Has taken an AI product from zero to deployment single-handedly. Builds the agents, the app and the data layer.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Head of TechOps & Security" data-en="Head of TechOps & Security">Head of TechOps & Security</span>
+          <p data-pt="17 anos de TI enterprise, segurança e governança corporativa. Prática AI-native em automação e orquestração. Infraestrutura, identidade e segurança da plataforma." data-en="17 years in enterprise IT, security and corporate governance. AI-native practice in automation and orchestration. Platform infrastructure, identity and security.">17 years in enterprise IT, security and corporate governance. AI-native practice in automation and orchestration. Platform infrastructure, identity and security.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Head de Automobilismo Virtual · Lead Coach" data-en="Head of Virtual Motorsport · Lead Coach">Head of Virtual Motorsport · Lead Coach</span>
+          <p data-pt="Coach de sim racing e piloto. Responsável pela metodologia de treino, pela banca de coaches e pelo time de automobilismo virtual da casa." data-en="Sim racing coach and driver. Responsible for the training methodology, the coaching bench and the house virtual motorsport team.">Sim racing coach and driver. Responsible for the training methodology, the coaching bench and the house virtual motorsport team.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="CMO · Marketing & Community" data-en="CMO · Marketing & Community">CMO · Marketing & Community</span>
+          <p data-pt="Anos de marketing de canais em consultoria global. Criativos e IA aplicada a conteúdo, imagem e vídeo. Marca, canais e comunidade." data-en="Years of channel marketing at a global consultancy. Creative work and AI applied to content, image and video. Brand, channels and community.">Years of channel marketing at a global consultancy. Creative work and AI applied to content, image and video. Brand, channels and community.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="People, Finance, Tax & PMO" data-en="People, Finance, Tax & PMO">People, Finance, Tax & PMO</span>
+          <p data-pt="Operações, finanças e pessoas: caixa, contratos, planejamento e a interface com contadores e advogados nos EUA e no Brasil." data-en="Operations, finance and people: cash, contracts, planning and the interface with accountants and lawyers in the US and Brazil.">Operations, finance and people: cash, contracts, planning and the interface with accountants and lawyers in the US and Brazil.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Chief Trust Officer · Cyber, Privacy & AI Governance" data-en="Chief Trust Officer · Cyber, Privacy & AI Governance">Chief Trust Officer · Cyber, Privacy & AI Governance</span>
+          <p data-pt="Cibersegurança, privacidade e governança de IA. Proteção de dados (DPO), segurança do produto e uso responsável de IA." data-en="Cybersecurity, privacy and AI governance. Data protection (DPO), product security and responsible use of AI.">Cybersecurity, privacy and AI governance. Data protection (DPO), product security and responsible use of AI.</p>
+        </div>
+        <!-- ATIVAR APÓS A ASSINATURA (Founding Product Designer):
+        <div class="fcard">
+          <span class="ftag" data-pt="Founding Product Designer" data-en="Founding Product Designer">Founding Product Designer</span>
+          <p data-pt="Product e visual designer com estúdio próprio. Design system, pesquisa com pilotos e os fluxos do produto, do diagnóstico ao coaching." data-en="Product and visual designer with their own studio. Design system, driver research and the product flows, from assessment to coaching.">Product and visual designer with their own studio. Design system, driver research and the product flows, from assessment to coaching.</p>
+        </div>
+        -->
+      </div>
+
+      <span class="entity reveal" style="margin-top:32px">The Podium AI LLC <span class="sep">·</span> <span data-pt="Flórida, EUA" data-en="Florida, USA">Florida, USA</span> <span class="sep">·</span> 2026</span>
     </div>
   </section>
 
@@ -313,30 +452,30 @@
   <section class="section cta" id="lista">
     <div class="wrap">
       <div class="cta-inner reveal">
-        <h2 class="h2" data-pt-html="Entre na lista de <span class='r'>acesso antecipado</span>." data-en-html="Get on the <span class='r'>early-access</span> list.">Entre na lista de <span class="r">acesso antecipado</span>.</h2>
-        <p class="sub" data-pt="Seja avisado quando abrirmos. Estamos construindo agora, em 2026." data-en="We'll let you know when we open. We're building right now, in 2026.">Seja avisado quando abrirmos. Estamos construindo agora, em 2026.</p>
+        <h2 class="h2" data-pt-html="Entre na lista de <span class='r'>acesso antecipado</span>." data-en-html="Get on the <span class='r'>early-access</span> list.">Get on the <span class="r">early-access</span> list.</h2>
+        <p class="sub" data-pt="Seja avisado quando abrirmos. Estamos construindo agora, em 2026." data-en="We'll let you know when we open. We're building right now, in 2026.">We'll let you know when we open. We're building right now, in 2026.</p>
 
-        <span class="form-label" data-pt="Acesso Antecipado" data-en="Early Access">Acesso Antecipado</span>
+        <span class="form-label" data-pt="Acesso Antecipado" data-en="Early Access">Early Access</span>
         <form class="form" id="signup-form" action="https://formspree.io/f/xzdylejr" method="POST">
           <input type="email" name="email" class="input"
                  data-pt-placeholder="seu@email.com" data-en-placeholder="your@email.com"
-                 placeholder="seu@email.com" required aria-label="Email">
+                 placeholder="your@email.com" required aria-label="Email">
           <button type="submit" class="button" id="submit-btn"
-                  data-pt="Entrar na Lista" data-en="Join the List">Entrar na Lista</button>
+                  data-pt="Entrar na Lista" data-en="Join the List">Join the List</button>
         </form>
         <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
 
         <p class="contact-line"
            data-pt-html='ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'
-           data-en-html='or write to <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'>ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a></p>
+           data-en-html='or write to <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'>or write to <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a></p>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer
-    data-pt="© 2026 The Podium AI LLC · Todos os direitos reservados"
-    data-en="© 2026 The Podium AI LLC · All rights reserved">© 2026 The Podium AI LLC · Todos os direitos reservados</footer>
+    data-pt-html='© 2026 The Podium AI LLC · Flórida, EUA · Todos os direitos reservados · <a href="/privacidade.html#pt">Privacidade</a> · <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'
+    data-en-html='© 2026 The Podium AI LLC · Florida, USA · All rights reserved · <a href="/privacidade.html">Privacy</a> · <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'>© 2026 The Podium AI LLC · Florida, USA · All rights reserved · <a href="/privacidade.html">Privacy</a> · <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a></footer>
 
   <script>
     // LANGUAGE SYSTEM
@@ -372,13 +511,15 @@
     btnPT.addEventListener('click', () => setLang('pt'));
     btnEN.addEventListener('click', () => setLang('en'));
 
+    // idioma: ?lang= na URL > escolha salva > idioma do navegador; o HTML estático é EN
     let savedLang = null;
-    try { const s = localStorage.getItem(LANG_KEY); if (s === 'pt' || s === 'en') savedLang = s; } catch(e){}
+    try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'pt' || q === 'en') savedLang = q; } catch(e){}
+    if (!savedLang) { try { const s = localStorage.getItem(LANG_KEY); if (s === 'pt' || s === 'en') savedLang = s; } catch(e){} }
     if (!savedLang) {
-      const nav = (navigator.language || 'pt').toLowerCase();
+      const nav = (navigator.language || 'en').toLowerCase();
       savedLang = nav.startsWith('pt') ? 'pt' : 'en';
     }
-    if (savedLang !== 'pt') setLang(savedLang);
+    if (savedLang !== 'en') setLang(savedLang);
 
     // FORM SUBMIT — Formspree
     const form = document.getElementById('signup-form');
