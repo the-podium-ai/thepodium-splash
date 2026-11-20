@@ -210,6 +210,9 @@
     .form-message{ margin-top:16px; font-size:13px; min-height:20px; transition:all .3s ease; font-weight:400; }
     .form-message.success{ color:#4ade80; }
     .form-message.error{ color:#f87171; }
+    .consent-line{ margin:6px auto 0; max-width:420px; font-size:12px; line-height:1.5; color:var(--dim); }
+    .consent-line a{ color:var(--muted); border-bottom:1px dotted #444; padding-bottom:1px; }
+    .consent-line a:hover{ color:var(--red); border-bottom-color:var(--red); }
     .contact-line{ margin-top:26px; font-size:12px; color:var(--dim); letter-spacing:.5px; }
     .contact-line a{ color:var(--muted); border-bottom:1px dotted #444; transition:all .2s ease; padding-bottom:1px; }
     .contact-line a:hover{ color:var(--red); border-bottom-color:var(--red); }
@@ -298,7 +301,7 @@
         <div class="fcard">
           <span class="ftag" data-pt="Hardware & Setup" data-en="Hardware & Setup">Hardware & Setup</span>
           <h3 data-pt="Comece certo" data-en="Start right">Start right</h3>
-          <p data-pt="O hardware e a configuração certos desde o dia 1, com orientação assistida por IA — sem gastar meses e dinheiro no caminho errado." data-en="The right hardware and setup from day one, with AI-assisted guidance — without losing months and money down the wrong path.">The right hardware and setup from day one, with AI-assisted guidance — without losing months and money down the wrong path.</p>
+          <p data-pt="O hardware e a configuração certos desde o dia 1 — sem gastar meses e dinheiro no caminho errado." data-en="The right hardware and setup from day one — without losing months and money down the wrong path.">The right hardware and setup from day one — without losing months and money down the wrong path.</p>
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="Diagnóstico" data-en="Assessment">Assessment</span>
@@ -308,7 +311,7 @@
         <div class="fcard">
           <span class="ftag" data-pt="Treino" data-en="Training">Training</span>
           <h3 data-pt="Evolua com dados" data-en="Improve with data">Improve with data</h3>
-          <p data-pt="A IA transforma as suas sessões em um plano de treino objetivo, com conteúdo feito por coaches." data-en="AI turns your sessions into an objective training plan, with content made by coaches.">AI turns your sessions into an objective training plan, with content made by coaches.</p>
+          <p data-pt="A plataforma transforma as suas sessões em um plano de treino objetivo, com conteúdo feito por coaches." data-en="The platform turns your sessions into an objective training plan, with content made by coaches.">The platform turns your sessions into an objective training plan, with content made by coaches.</p>
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="Coaching" data-en="Coaching">Coaching</span>
@@ -324,13 +327,13 @@
     <div class="wrap">
       <span class="eyebrow reveal" data-pt="Como funciona" data-en="How it works">How it works</span>
       <h2 class="h2 reveal" data-pt-html="Dado do piloto, análise e <span class='r'>recomendação</span>." data-en-html="Driver data, analysis and <span class='r'>recommendation</span>.">Driver data, analysis and <span class="r">recommendation</span>.</h2>
-      <p class="sub reveal" data-pt="A tecnologia por trás da plataforma, em quatro camadas." data-en="The technology behind the platform, in four layers.">The technology behind the platform, in four layers.</p>
+      <p class="sub reveal" data-pt="A tecnologia por trás da plataforma." data-en="The technology behind the platform.">The technology behind the platform.</p>
 
       <div class="fgrid fgrid-2 reveal">
         <div class="fcard">
           <span class="ftag" data-pt="01 · Coleta" data-en="01 · Collection">01 · Collection</span>
           <h3 data-pt="Telemetria com consentimento" data-en="Telemetry with consent">Telemetry with consent</h3>
-          <p data-pt="Um coletor próprio lê a telemetria das suas sessões no simulador, com o seu consentimento, e envia para a plataforma. Nada é coletado sem você saber." data-en="Our own collector reads the telemetry of your sim sessions, with your consent, and sends it to the platform. Nothing is collected without you knowing.">Our own collector reads the telemetry of your sim sessions, with your consent, and sends it to the platform. Nothing is collected without you knowing.</p>
+          <p data-pt="Um coletor lê a telemetria das suas sessões no simulador, com o seu consentimento, e envia para a plataforma. Nada é coletado sem você saber." data-en="A collector reads the telemetry of your sim sessions, with your consent, and sends it to the platform. Nothing is collected without you knowing.">A collector reads the telemetry of your sim sessions, with your consent, and sends it to the platform. Nothing is collected without you knowing.</p>
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="02 · Dados" data-en="02 · Data">02 · Data</span>
@@ -384,7 +387,7 @@
       <span class="eyebrow reveal" data-pt="Onde estamos" data-en="Where we are">Where we are</span>
       <h2 class="h2 reveal" data-pt-html="Construindo <span class='r'>agora</span>." data-en-html="Building <span class='r'>now</span>.">Building <span class="r">now</span>.</h2>
       <p class="sub reveal" data-pt="MVP em desenvolvimento em 2026, beta fechado com pilotos convidados em seguida e lançamento público em 2027." data-en="MVP under development in 2026, a closed beta with invited drivers next, and public launch in 2027.">MVP under development in 2026, a closed beta with invited drivers next, and public launch in 2027.</p>
-
+    </div>
   </section>
 
   <!-- REAL -->
@@ -392,7 +395,7 @@
     <div class="wrap">
       <span class="eyebrow reveal" data-pt="Do virtual ao real" data-en="From virtual to real">From virtual to real</span>
       <h2 class="h2 reveal" data-pt-html="O simulador é só o <span class='r'>começo</span>." data-en-html="The sim is just the <span class='r'>start</span>.">The sim is just the <span class="r">start</span>.</h2>
-      <p class="sub reveal" data-pt="A técnica, a consistência e o racecraft que você constrói no sim são a mesma base que já levou pilotos do servidor para a pista de verdade." data-en="The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to the real track.">The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to the real track.</p>
+      <p class="sub reveal" data-pt="A técnica, a consistência e o racecraft que você constrói no sim são a mesma base que já levou pilotos do servidor para vitórias na pista real." data-en="The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to wins on the real track.">The technique, consistency and racecraft you build in the sim are the same foundation that has already taken drivers from the server to wins on the real track.</p>
     </div>
   </section>
 
@@ -401,7 +404,7 @@
     <div class="wrap">
       <span class="eyebrow reveal" data-pt="Quem constrói" data-en="Who's building it">Who's building it</span>
       <h2 class="h2 reveal" data-pt-html="Um time que já <span class='r'>construiu</span> e escalou tecnologia." data-en-html="A team that has already <span class='r'>built</span> and scaled technology.">A team that has already <span class="r">built</span> and scaled technology.</h2>
-      <p class="sub reveal" data-pt="Produto, engenharia, dados, segurança, automobilismo e marketing, distribuídos entre Brasil e EUA." data-en="Product, engineering, data, security, motorsport and marketing, spread across Brazil and the US.">Product, engineering, data, security, motorsport and marketing, spread across Brazil and the US.</p>
+      <p class="sub reveal" data-pt="Produto, engenharia, dados e IA, design, automobilismo, marketing, storytelling e segurança, distribuídos entre Brasil e EUA." data-en="Product, engineering, data and AI, design, motorsport, marketing, storytelling and security, spread across Brazil and the US.">Product, engineering, data and AI, design, motorsport, marketing, storytelling and security, spread across Brazil and the US.</p>
 
       <div class="fgrid fgrid-team reveal">
         <div class="fcard">
@@ -414,34 +417,40 @@
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="Founding Engineer" data-en="Founding Engineer">Founding Engineer</span>
-          <p data-pt="Engenheiro full-stack AI-native. Já levou um produto de IA do zero ao deploy sozinho. Constrói os agentes, o app e a camada de dados." data-en="AI-native full-stack engineer. Has taken an AI product from zero to deployment single-handedly. Builds the agents, the app and the data layer.">AI-native full-stack engineer. Has taken an AI product from zero to deployment single-handedly. Builds the agents, the app and the data layer.</p>
+          <p data-pt="Engenheiro full-stack AI-native. Já levou um produto de IA do zero ao deploy sozinho. Constrói a aplicação da plataforma, do front à integração com o simulador." data-en="AI-native full-stack engineer. Has taken an AI product from zero to deployment single-handedly. Builds the platform application, from the front end to the simulator integration.">AI-native full-stack engineer. Has taken an AI product from zero to deployment single-handedly. Builds the platform application, from the front end to the simulator integration.</p>
         </div>
         <div class="fcard">
-          <span class="ftag" data-pt="Head of TechOps & Security" data-en="Head of TechOps & Security">Head of TechOps & Security</span>
-          <p data-pt="17 anos de TI enterprise, segurança e governança corporativa. Prática AI-native em automação e orquestração. Infraestrutura, identidade e segurança da plataforma." data-en="17 years in enterprise IT, security and corporate governance. AI-native practice in automation and orchestration. Platform infrastructure, identity and security.">17 years in enterprise IT, security and corporate governance. AI-native practice in automation and orchestration. Platform infrastructure, identity and security.</p>
+          <span class="ftag" data-pt="Head de Dados & IA" data-en="Head of Data & AI">Head of Data & AI</span>
+          <p data-pt="Engenheiro de IA com base em dados. Dono do core de dados do piloto e da camada de IA: modelo de dados, agentes e avaliação de qualidade." data-en="AI engineer with a data background. Owns the driver data core and the AI layer: data model, agents and quality evaluation.">AI engineer with a data background. Owns the driver data core and the AI layer: data model, agents and quality evaluation.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Founding Product Designer" data-en="Founding Product Designer">Founding Product Designer</span>
+          <p data-pt="Product e visual designer com estúdio próprio. Design system, pesquisa com pilotos e os fluxos do produto, do diagnóstico ao coaching." data-en="Product and visual designer with their own studio. Design system, driver research and the product flows, from assessment to coaching.">Product and visual designer with their own studio. Design system, driver research and the product flows, from assessment to coaching.</p>
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="Head de Automobilismo Virtual · Lead Coach" data-en="Head of Virtual Motorsport · Lead Coach">Head of Virtual Motorsport · Lead Coach</span>
           <p data-pt="Coach de sim racing e piloto. Responsável pela metodologia de treino, pela banca de coaches e pelo time de automobilismo virtual da casa." data-en="Sim racing coach and driver. Responsible for the training methodology, the coaching bench and the house virtual motorsport team.">Sim racing coach and driver. Responsible for the training methodology, the coaching bench and the house virtual motorsport team.</p>
         </div>
         <div class="fcard">
-          <span class="ftag" data-pt="CMO · Marketing & Community" data-en="CMO · Marketing & Community">CMO · Marketing & Community</span>
+          <span class="ftag" data-pt="Head de Marketing & Community" data-en="Head of Marketing & Community">Head of Marketing & Community</span>
           <p data-pt="Anos de marketing de canais em consultoria global. Criativos e IA aplicada a conteúdo, imagem e vídeo. Marca, canais e comunidade." data-en="Years of channel marketing at a global consultancy. Creative work and AI applied to content, image and video. Brand, channels and community.">Years of channel marketing at a global consultancy. Creative work and AI applied to content, image and video. Brand, channels and community.</p>
         </div>
         <div class="fcard">
-          <span class="ftag" data-pt="People, Finance, Tax & PMO" data-en="People, Finance, Tax & PMO">People, Finance, Tax & PMO</span>
-          <p data-pt="Operações, finanças e pessoas: caixa, contratos, planejamento e a interface com contadores e advogados nos EUA e no Brasil." data-en="Operations, finance and people: cash, contracts, planning and the interface with accountants and lawyers in the US and Brazil.">Operations, finance and people: cash, contracts, planning and the interface with accountants and lawyers in the US and Brazil.</p>
+          <span class="ftag" data-pt="Head de Storytelling & Video" data-en="Head of Storytelling & Video">Head of Storytelling & Video</span>
+          <p data-pt="Storyteller e produtor de vídeo. Dono da narrativa da marca e do conteúdo em vídeo. Piloto de endurance do time de automobilismo virtual da casa." data-en="Storyteller and video producer. Owns the brand narrative and video content. Endurance driver on the house virtual motorsport team.">Storyteller and video producer. Owns the brand narrative and video content. Endurance driver on the house virtual motorsport team.</p>
+        </div>
+        <div class="fcard">
+          <span class="ftag" data-pt="Head de TechOps" data-en="Head of TechOps">Head of TechOps</span>
+          <p data-pt="17 anos de TI enterprise, segurança e governança corporativa. Prática AI-native em automação e orquestração. Infraestrutura, ambientes e identidade da plataforma." data-en="17 years in enterprise IT, security and corporate governance. AI-native practice in automation and orchestration. Platform infrastructure, environments and identity.">17 years in enterprise IT, security and corporate governance. AI-native practice in automation and orchestration. Platform infrastructure, environments and identity.</p>
         </div>
         <div class="fcard">
           <span class="ftag" data-pt="Chief Trust Officer · Cyber, Privacy & AI Governance" data-en="Chief Trust Officer · Cyber, Privacy & AI Governance">Chief Trust Officer · Cyber, Privacy & AI Governance</span>
-          <p data-pt="Cibersegurança, privacidade e governança de IA. Proteção de dados (DPO), segurança do produto e uso responsável de IA." data-en="Cybersecurity, privacy and AI governance. Data protection (DPO), product security and responsible use of AI.">Cybersecurity, privacy and AI governance. Data protection (DPO), product security and responsible use of AI.</p>
+          <p data-pt="Cibersegurança, privacidade e governança de IA. Proteção de dados, segurança do produto e uso responsável de IA." data-en="Cybersecurity, privacy and AI governance. Data protection, product security and responsible use of AI.">Cybersecurity, privacy and AI governance. Data protection, product security and responsible use of AI.</p>
         </div>
-        <!-- ATIVAR APÓS A ASSINATURA (Founding Product Designer):
         <div class="fcard">
-          <span class="ftag" data-pt="Founding Product Designer" data-en="Founding Product Designer">Founding Product Designer</span>
-          <p data-pt="Product e visual designer com estúdio próprio. Design system, pesquisa com pilotos e os fluxos do produto, do diagnóstico ao coaching." data-en="Product and visual designer with their own studio. Design system, driver research and the product flows, from assessment to coaching.">Product and visual designer with their own studio. Design system, driver research and the product flows, from assessment to coaching.</p>
+          <span class="ftag" data-pt="Operations Lead" data-en="Operations Lead">Operations Lead</span>
+          <p data-pt="Operações, finanças e pessoas: caixa, contratos, planejamento e a interface com fornecedores nos EUA e no Brasil." data-en="Operations, finance and people: cash, contracts, planning and the interface with vendors in the US and Brazil.">Operations, finance and people: cash, contracts, planning and the interface with vendors in the US and Brazil.</p>
         </div>
-        -->
       </div>
 
       <span class="entity reveal" style="margin-top:32px">The Podium AI LLC <span class="sep">·</span> <span data-pt="Flórida, EUA" data-en="Florida, USA">Florida, USA</span> <span class="sep">·</span> 2026</span>
@@ -464,6 +473,9 @@
                   data-pt="Entrar na Lista" data-en="Join the List">Join the List</button>
         </form>
         <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
+        <p class="consent-line"
+           data-pt-html='Ao enviar, você concorda em receber avisos sobre a abertura da plataforma. Veja o <a href="/privacidade.html#pt">aviso de privacidade</a>.'
+           data-en-html='By submitting, you agree to receive updates about the platform opening. See the <a href="/privacidade.html">privacy notice</a>.'>By submitting, you agree to receive updates about the platform opening. See the <a href="/privacidade.html">privacy notice</a>.</p>
 
         <p class="contact-line"
            data-pt-html='ou escreva para <a href="mailto:hello@thepodium.ai">hello@thepodium.ai</a>'
